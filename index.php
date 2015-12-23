@@ -82,10 +82,29 @@
         </section>
         <section class="page" id="contact">
             <h1>Contact Me</h1>
-            <form action="mailto:me@mkalash.com" id="form" method="post" autocomplete="on">
+            <form action="#contact" id="form" method="post" autocomplete="on">
                 <table id="contactForm">
                     <caption>
-                    	Start your message here. After clicking submit, you will be redirected to your default email client to finish and send.
+                    	<?
+							if ($_POST["submit"] <> '') {
+								if ($_POST["subject"] && $_POST["email"] && $_POST["message"] && $_POST["name"]) {
+									$ToEmail = 'me@mkalash.com';
+									$EmailSubject = $_POST["subject"];
+									$mailheader = "From: " . $_POST["email"] . "\r\n";
+									$mailheader .= "Reply-To: " . $_POST["email"] . "\r\n";
+									$mailheader .= "Content-type: text/html;charset=iso-8859-1\r\n";
+									$MESSAGE_BODY = $_POST["name"];
+									if ($_POST["company"]) {
+										$MESSAGE_BODY .= ", " . $_POST["company"];
+									}
+									$MESSAGE_BODY .= "<br/><br/>" . nl2br($_POST["message"]);
+									mail($ToEmail, $EmailSubject, $MESSAGE_BODY, $mailheader) or die("ERROR");
+									echo 'Thank you for your interest. Please give up to 24 hours for a reply.<br/>';
+								} else {
+									echo 'Some fields were left blank! Please be sure all fields are filled out correctly, then try again.<br/>';
+								}
+							}
+                        ?>
                     </caption>
                     <tr>
                         <th><label for="name">Name</label></th>
@@ -116,7 +135,7 @@
             </form>
         </section>
         <footer id="footer">
-            <p id="fp">Copyright &copy; 2015 Mustafa Kalash</p>
+            <p id="fp">Copyright &copy; <? echo date('Y'); ?> Mustafa Kalash</p>
         </footer>
         <nav>
             <ul id="nav">
