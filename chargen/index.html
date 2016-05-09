@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>SS13 Character Generator</title>
+        <meta name="description" content="SS13 Character Generator"/>
+        <meta name="keywords" content="ss13, character, generator, char, gen, chargen, bs12, baystation"/>
+        <meta name="author" content="Mustafa Kalash"/>
+        <style type="text/css">
+        	label {
+        		padding: 0.5em;
+        		display:inline-block;
+        	}
+        	label input {
+        		float:left;
+        	}
+        </style>
+	</head>
+	<body>
+		<div id="options">
+			<form>
+				<fieldset name="species">
+					<legend>Species</legend>
+				</fieldset>
+				<fieldset name="jobs">
+					<legend>Occupations</legend>
+				</fieldset>
+				<button type="button" name="submit" onclick="chargen()">Generate</button>
+				<output id="output"></output>
+			</form>
+		</div>
+        <script type="text/javascript" src="script.js"></script>
+	</body>
