@@ -102,7 +102,7 @@ var motives = [
     "exact revenge",
     "move up in the world",
     "seek adventure",
-    "keep justice",
+    "exact justice",
     "be in charge of everything",
     "educate others",
     "solve a mystery about their past",
@@ -119,9 +119,6 @@ var motives = [
 var speciesDOM = document.querySelector("fieldset[name='species']");
 var jobsDOM = document.querySelector("fieldset[name='jobs']");
 for(var species in speciesList) {
-	var label = document.createElement("label");
-	label.textContent = speciesList[species];
-	speciesDOM.appendChild(label);
 	var input = document.createElement("input");
 	input.type = "checkbox";
 	input.id = species;
@@ -129,12 +126,13 @@ for(var species in speciesList) {
 	if(species == "human") {
 		input.checked = "checked";
 	}
-	label.appendChild(input);
+	speciesDOM.appendChild(input);
+	var label = document.createElement("label");
+	label.textContent = speciesList[species];
+	label.setAttribute("for", species);
+	speciesDOM.appendChild(label);
 }
 for(var job in jobs) {
-	var label = document.createElement("label");
-	label.textContent = jobs[job];
-	jobsDOM.appendChild(label);
 	var input = document.createElement("input");
 	input.type = "checkbox";
 	input.id = job;
@@ -142,7 +140,11 @@ for(var job in jobs) {
 	if(job == "assistant") {
 		input.checked = "checked";
 	}
-	label.appendChild(input);
+	jobsDOM.appendChild(input);
+	var label = document.createElement("label");
+	label.textContent = jobs[job];
+	label.setAttribute("for", job);
+	jobsDOM.appendChild(label);
 }
 function getRandomInt(min, max) {
 	  return Math.floor(Math.random() * (max - min)) + min;
@@ -151,6 +153,10 @@ function chargen() {
 	var output = "";
 	var selectedSpecies = speciesDOM.querySelectorAll("input:checked");
 	var selectedJobs = jobsDOM.querySelectorAll("input:checked");
+	var minFlaws = parseInt(document.getElementById("minFlaws").value);
+	var maxFlaws = parseInt(document.getElementById("maxFlaws").value);
+	var minMotives = parseInt(document.getElementById("minMotives").value);
+	var maxMotives = parseInt(document.getElementById("maxMotives").value);
 	if(!selectedSpecies.length || !selectedJobs.length) {
 		output = "You must select at least one species and at least one job."
 	} else {
@@ -164,17 +170,31 @@ function chargen() {
 		} else {
 			output = "A(n) " + speciesList[species] + " " + jobs[job];
 		}
-		var flawAmt = getRandomInt(1, 4);
-		var motiveAmt = getRandomInt(1, 4);
-		output += " who " + flaws[getRandomInt(0, flaws.length)];
-		while(flawAmt > 1) {
-			output += ", and " + flaws[getRandomInt(0, flaws.length)];
-			flawAmt--;
+		var flawAmt = getRandomInt(minFlaws, maxFlaws);
+		var motiveAmt = getRandomInt(minMotives, maxMotives);
+		if(flawAmt > 0) {
+			output += " who " + flaws[getRandomInt(0, flaws.length)];
+			while(flawAmt > 1) {
+				if(flawAmt == 2) {
+					output += " and ";
+				} else {
+					output += ", ";
+				}
+				output += flaws[getRandomInt(0, flaws.length)];
+				flawAmt--;
+			}
 		}
-		output += "; and who desperately wants to " + motives[getRandomInt(0, motives.length)];
-		while(motiveAmt > 1) {
-			output += ", and " + motives[getRandomInt(0, motives.length)];
-			motiveAmt--;
+		if(motiveAmt > 0) {
+			output += ". They desperately want to " + motives[getRandomInt(0, motives.length)];
+			while(motiveAmt > 1) {
+				if(motiveAmt == 2) {
+					output += " and ";
+				} else {
+					output += ", ";
+				}
+				output += motives[getRandomInt(0, motives.length)];
+				motiveAmt--;
+			}
 		}
 		output += "."
 	}
@@ -187,4 +207,35 @@ function chargen() {
 		outputDOM.appendChild(p);
 	}
 	p.textContent = output;
+}
+function select(section, what) {
+	var checkboxes;
+	switch(section) {
+		case "species":
+			checkboxes = speciesDOM.querySelectorAll("input[type='checkbox']");
+			break;
+		case "jobs":
+			checkboxes = jobsDOM.querySelectorAll("input[type='checkbox']");
+			break;
+		default:
+			checkboxes = speciesDOM.querySelectorAll("input[type='checkbox']");
+			break;
+	}
+	switch(what) {
+		case "all":
+			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
+				checkboxes[i].checked = "checked";
+			}
+			break;
+		case "none":
+			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
+				checkboxes[i].checked = "";
+			}
+			break;
+		default:
+			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
+				checkboxes[i].checked = "checked";
+			}
+			break;
+	}
 }

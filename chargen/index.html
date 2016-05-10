@@ -7,28 +7,35 @@
         <meta name="description" content="SS13 Character Generator"/>
         <meta name="keywords" content="ss13, character, generator, char, gen, chargen, bs12, baystation"/>
         <meta name="author" content="Mustafa Kalash"/>
-        <style type="text/css">
-        	label {
-        		padding: 0.5em;
-        		display:inline-block;
-        	}
-        	label input {
-        		float:left;
-        	}
-        </style>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 	<body>
-		<div id="options">
-			<form>
-				<fieldset name="species">
-					<legend>Species</legend>
-				</fieldset>
-				<fieldset name="jobs">
-					<legend>Occupations</legend>
-				</fieldset>
-				<button type="button" name="submit" onclick="chargen()">Generate</button>
-				<output id="output"></output>
-			</form>
-		</div>
+		<form>
+			<fieldset name="species">
+				<legend>Species</legend>
+				<label>Select:</label>
+				<button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
+				<button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
+			</fieldset>
+			<fieldset name="jobs">
+				<legend>Occupations</legend>
+				<label>Select:</label>
+				<button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
+				<button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
+			</fieldset>
+			<fieldset name="options">
+				<legend>Options</legend>
+				<label for="minFlaws">Minimum flaws</label>
+				<input id="minFlaws" type="number" value=1 required />
+				<label for="maxFlaws">Maximum flaws</label>
+				<input id="maxFlaws" type="number" value=3 required />
+				<label for="minMotives">Minimum motivations</label>
+				<input id="minMotives" type="number" value=1 required />
+				<label for="maxMotives">Maximum motivations</label>
+				<input id="maxMotives" type="number" value=3 required />
+			</fieldset>
+			<button type="button" name="submit" onclick="chargen()">Generate</button>
+			<output id="output"></output>
+		</form>
         <script type="text/javascript" src="script.js"></script>
 	</body>

@@ -1,0 +1,11 @@
+fieldset {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: space-around;
+	align-items: center;
+}
+
+label {
+	margin: 0.5em;
+}
