@@ -6,7 +6,7 @@ var speciesList = {
 	"resomi":"Resomi",
 	"skrell":"Skrell",
 	"diona":"Diona",
-	"machine":"Machine"
+	"machine":"IPC"
 };
 var jobs = {
 	"assistant":"Assistant",
@@ -92,12 +92,12 @@ var flaws = [
 // kinda stolen from http://www.springhole.net/writing_roleplaying_randomators/character-motivation.htm
 var motives = [
     "marry someone who isn't interested",
-    "kill someone who has hurt them in the past",
+    "kill someone who hurt $dative in the past",
     "find a long lost friend",
-    "learn the true fate of someone who suddenly left their life",
-    "protect the people they love",
-    "change their ways",
-    "escape from someone who intends to hurt them",
+    "learn the true fate of someone who suddenly left $possesive life",
+    "protect the people $pronoun loves",
+    "change $possesive ways",
+    "escape from someone who intends to hurt $dative",
     "fit in",
     "exact revenge",
     "move up in the world",
@@ -105,17 +105,277 @@ var motives = [
     "exact justice",
     "be in charge of everything",
     "educate others",
-    "solve a mystery about their past",
+    "solve a mystery about $possesive past",
     "help those who need it",
     "fall in love",
     "get rich",
     "become famous",
-    "earn the respect of their peers",
+    "earn the respect of $possesive peers",
     "have children",
     "be attractive",
     "live in peace",
     "break an addiction or bad habit",
 ];
+var pronoun = {
+	"male":"he",
+	"female":"she",
+	"plural":"they",
+	"neuter":"it"
+};
+var dative = {
+	"male":"him",
+	"female":"her",
+	"plural":"them",
+	"neuter":"it"
+};
+var possesive = {
+	"male":"his",
+	"female":"her",
+	"plural":"their",
+	"neuter":"its"
+};
+var reflexive = {
+	"male":"himself",
+	"female":"herself",
+	"plural":"themselves",
+	"neuter":"itself"
+};
+var hair = {
+	"human": [
+	     "short hair",
+	     "cut hair",
+	     "flaired hair",
+	     "shoulder-length hair",
+	     "long hair",
+	     "very long hair",
+	     "a long fringe",
+	     "a longer fringe",
+	     "half-banged hair",
+	     "a ponytail",
+	     "a side ponytail",
+	     "parted hair",
+	     "a pompadour",
+	     "a quiff",
+	     "bedhead",
+	     "a beehive",
+	     "a bobcurl",
+	     "a bob",
+	     "a bowl cut",
+	     "a buzzcut",
+	     "a crewcut",
+	     "a combover",
+	     "a fatherly hairstyle",
+	     "a reverse mohawk",
+	     "devil locks",
+	     "dreadlocks",
+	     "curls",
+	     "an afro",
+	     "a big afro",
+	     "a flat top",
+	     "an emo hairstyle",
+	     "a long emo hairstyle",
+	     "a short overeye hairstyle",
+	     "a long overeye hairstyle",
+	     "a flow",
+	     "a feather top",
+	     "a hitop",
+	     "a mowhawk",
+	     "Adam Jensen hair",
+	     "gelled back hair",
+	     "a gentle hairstyle",
+	     "spiky hair",
+	     "kusanagi hair",
+	     "pigtails",
+	     "a hime cut",
+	     "a floor-length braid",
+	     "a medium braid",
+	     "a long braid",
+	     "an odango",
+	     "ombre hair",
+	     "an updo",
+	     "a skinhead hairstyle",
+	     "balding hair",
+	     "a family man hairstyle",
+	     "Drillruru hair",
+	     "a dandy pompadour",
+	     "poofy hair",
+	     "chrono hair",
+	     "Vegeta hair",
+	     "CIA hair",
+	     "Mulder hair",
+	     "Scully hair",
+	     "a nitori",
+	     "Joestar hair",
+	     "volaju hair",
+	     "short bangs",
+	     "half-shaved emo hair",
+	     "a bun",
+	     "a double bun"
+     ],
+    "unathi": [
+         "a bobcurl",
+         "a bob",
+         "a buzzcut",
+         "a mohawk",
+         "spiky hair",
+         "long spines",
+         "short spines",
+         "long frills",
+         "short frills",
+         "horns"
+    ],
+    "tajara": [
+         "a clean hairstyle",
+         "bangs",
+         "a braid",
+         "shaggy hair",
+         "a mohawk",
+         "plait hair",
+         "straight hair",
+         "long hair",
+         "a rat tail",
+         "spiky hair",
+         "messy hair"
+	],
+	"vox": [
+         "short quills", 
+         "kingly quills", 
+         "a quill mohawk"
+    ],
+	"resomi": [
+         "plumage",
+         "spiky hair"
+	],
+	"machine": [
+	     "a pink screen",
+	     "a red screen",
+	     "a green screen",
+	     "a blue screen",
+	     "a screen displaying breakout",
+	     "a screen displaying an eight",
+	     "a screen displaying goggles",
+	     "a screen displaying a heart",
+	     "a screen displaying an eye",
+	     "a screen displaying nature",
+	     "an orange screen",
+	     "a purple screen",
+	     "a screen displaying a shower",
+	     "a screen displaying static",
+	     "a yellow screen"
+    ]
+};
+var facialHair = {
+	"human": [
+		"a Watson mustache",
+		"a Hulk Hogan mustache",
+		"a Van Dyke mustache",
+		"a square mustache",
+		"a Selleck mustache",
+		"a neckbeard",
+		"a full beard",
+		"a long beard",
+		"a very long beard",
+		"elvis sideburns",
+		"an Abraham Lincoln beard",
+		"a chinstrap",
+		"a hipster beard",
+		"a goatee",
+		"an Adam Jensen beard",
+		"a Volaju beard",
+		"a dward beard"
+	 ],
+	"unathi": [
+        "Elvis sideburns"
+	],
+	"tajara": [
+	    "sideburns",
+	    "a muttonchop",
+	    "a pencilstache",
+	    "a mustache",
+	    "a goatee",
+	    "a small mustache"
+    ]
+};
+var hairColors = {
+	"human": [
+	    "natural black",
+	    "jet black",
+	    "medium brown",
+	    "chestnut brown",
+	    "light brown",
+	    "platinum blonde",
+	    "ash blonde",
+	    "strawberry blonde",
+	    "dark auburn",
+	    "light auburn",
+	    "golden blonde",
+	    "dark brown"
+	],
+	"unathi": [
+	   	"tan",
+		"green",
+		"turquoise"
+	],
+	"tajara": [
+	   	"tan",
+	    "brown",
+	    "dark brown",
+	    "light gray",
+	    "gray",
+	    "dark gray"
+	],
+	"vox": [
+        "green"
+	],
+    "resomi": [
+        "green",
+        "orange",
+        "yellow",
+        "red",
+        "blue",
+        "indigo",
+        "violet"
+   ]
+};
+var skinTones = {
+	"human": [
+	    "pale skin",
+	    "white skin",
+	    "tan skin",
+	    "brown skin",
+	    "dark brown skin",
+	    "black skin"
+    ],
+    "unathi": [
+        "tan scales",
+        "green scales",
+        "turquoise scales"
+	],
+	"tajara": [
+	    "tan fur",
+        "brown fur",
+        "dark brown fur",
+        "light gray fur",
+        "gray fur",
+        "dark gray fur"
+    ],
+    "resomi": [
+        "green feathers",
+        "orange feathers",
+        "yellow feathers",
+        "red feathers",
+        "blue feathers",
+        "indigo feathers",
+        "violet feathers"
+    ],
+    "skrell": [
+        "light green skin",
+        "green skin",
+        "turquoise skin",
+        "light blue skin",
+        "dark blue skin"
+    ]
+};
 var speciesDOM = document.querySelector("fieldset[name='species']");
 var jobsDOM = document.querySelector("fieldset[name='jobs']");
 for(var species in speciesList) {
@@ -149,6 +409,12 @@ for(var job in jobs) {
 function getRandomInt(min, max) {
 	  return Math.floor(Math.random() * (max - min)) + min;
 }
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+function replaceGender(string, sex) {
+	return string.replace("$Pronoun", pronoun[sex].capitalize()).replace("$Dative", dative[sex].capitalize()).replace("$Possesive", possesive[sex].capitalize()).replace("$Reflexive", reflexive[sex].capitalize()).replace("$pronoun", pronoun[sex]).replace("$dative", dative[sex]).replace("$possesive", possesive[sex]).replace("$reflexive", reflexive[sex]);
+}
 function chargen() {
 	var output = "";
 	var selectedSpecies = speciesDOM.querySelectorAll("input:checked");
@@ -157,6 +423,7 @@ function chargen() {
 	var maxFlaws = parseInt(document.getElementById("maxFlaws").value);
 	var minMotives = parseInt(document.getElementById("minMotives").value);
 	var maxMotives = parseInt(document.getElementById("maxMotives").value);
+	var sex = document.querySelector("input[name='sex']:checked").value;
 	if(!selectedSpecies.length || !selectedJobs.length) {
 		output = "You must select at least one species and at least one job."
 	} else {
@@ -164,35 +431,110 @@ function chargen() {
 		var job = selectedJobs[getRandomInt(0, selectedJobs.length)].id;
 		if(job == "ai") {
 			output = "An AI";
+			sex = "neuter";
 		} else if(job == "cyborg") {
 			var module = cyborgModules[getRandomInt(0, cyborgModules.length)];
 			output = "A Cyborg with the " + module + " module";
+			sex = "neuter";
 		} else {
+			if(species == "diona") {
+				sex = "plural";
+			} else if(species == "machine") {
+				sex = "neuter";
+			}
 			output = "A(n) " + speciesList[species] + " " + jobs[job];
 		}
-		var flawAmt = getRandomInt(minFlaws, maxFlaws);
-		var motiveAmt = getRandomInt(minMotives, maxMotives);
-		if(flawAmt > 0) {
-			output += " who " + flaws[getRandomInt(0, flaws.length)];
-			while(flawAmt > 1) {
-				if(flawAmt == 2) {
-					output += " and ";
-				} else {
+		var skinTone;
+		var hairStyle;
+		var hairColor;
+		var facialHairStyle;
+		var facialHairColor;
+		if(skinTones[species]) {
+			skinTone = skinTones[species][getRandomInt(0, skinTones[species].length)];
+			if(job == "ai" || job == "cyborg") {
+				skinTone = null;
+			}
+		}
+		if(hair[species]) {
+			hairStyle = hair[species][getRandomInt(0, hair[species].length)];
+			if(Math.random() <= (1 / (hair[species].length + 1)) || job == "ai" || job == "cyborg" && species != "machine") {
+				hairStyle = null;
+			}
+		}
+		if(facialHair[species]) {
+			facialHairStyle = facialHair[species][getRandomInt(0, facialHair[species].length)];
+			if(Math.random() <= 0.6 || job == "ai" || job == "cyborg") {
+				facialHairStyle = null;
+			}
+		}
+		if(hairColors[species]) {
+			hairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+			facialHairColor = hairColor;
+			if(Math.random() <= 0.3) {
+				facialHairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+			}
+		}
+		if(hairStyle || facialHairStyle || skinTone) {
+			output += " with ";
+		}
+		if(skinTone) {
+			output += skinTone;
+			if(hairStyle && facialHairStyle) {
+				output += ", ";
+			} else if(hairStyle || facialHairStyle) {
+				output += " and ";
+			}
+		}
+		if(hairStyle) {
+			output += hairStyle;
+			if(hairColor) {
+				output += " that is " + hairColor;
+			}
+			if(facialHairStyle) {
+				output += ", and ";
+			}
+		}
+		if(facialHairStyle) {
+			output += facialHairStyle;
+			if(facialHairColor) {
+				output += " that is " + facialHairColor;
+			}
+		}
+		var flawAmt = getRandomInt(minFlaws, maxFlaws + 1);
+		var motiveAmt = getRandomInt(minMotives, maxMotives + 1);
+		var availableFlaws = flaws.slice(0);
+		var availableMotives = motives.slice(0);
+		var firstItem = true;
+		if(flawAmt > 0 && availableFlaws.length) {
+			output += ". " + pronoun[sex].capitalize() + " ";
+			while(flawAmt > 0 && availableFlaws.length) {
+				if((flawAmt == 1 || availableFlaws.length == 1) && !firstItem) {
+					output += ", and ";
+				} else if(!firstItem) {
 					output += ", ";
+				} else {
+					firstItem = false;
 				}
-				output += flaws[getRandomInt(0, flaws.length)];
+				var chosenFlaw = availableFlaws[getRandomInt(0, availableFlaws.length)];
+				output += replaceGender(chosenFlaw, sex);
+				availableFlaws.splice(availableFlaws.indexOf(chosenFlaw), 1);
 				flawAmt--;
 			}
 		}
-		if(motiveAmt > 0) {
-			output += ". They desperately want to " + motives[getRandomInt(0, motives.length)];
-			while(motiveAmt > 1) {
-				if(motiveAmt == 2) {
-					output += " and ";
-				} else {
+		firstItem = true;
+		if(motiveAmt > 0 && availableMotives.length) {
+			output += ". " + pronoun[sex].capitalize() + " wants to ";
+			while(motiveAmt > 0) {
+				if((motiveAmt == 1 || availableMotives.length == 1) && !firstItem) {
+					output += ", and ";
+				} else if(!firstItem) {
 					output += ", ";
+				} else {
+					firstItem = false;
 				}
-				output += motives[getRandomInt(0, motives.length)];
+				var chosenMotive = availableMotives[getRandomInt(0, availableMotives.length)];
+				output += replaceGender(chosenMotive, sex);
+				availableMotives.splice(availableMotives.indexOf(chosenMotive), 1);
 				motiveAmt--;
 			}
 		}
