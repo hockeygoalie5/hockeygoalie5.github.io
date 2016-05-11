@@ -11,35 +11,49 @@
 	</head>
 	<body>
 		<form>
-			<fieldset name="species">
+			<fieldset id="species" name="species">
 				<legend>Species</legend>
+			</fieldset>
+			<div>
 				<label>Select:</label>
 				<button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
 				<button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
-			</fieldset>
-			<fieldset name="jobs">
+			</div>
+			<fieldset id="jobs" name="jobs">
 				<legend>Occupations</legend>
+			</fieldset>
+			<div>
 				<label>Select:</label>
 				<button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
 				<button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
-			</fieldset>
-			<fieldset name="sex">
+			</div>
+			<fieldset id="sex" name="sex">
 				<legend>Sex</legend>
-				<input name="sex" type="radio" id="male" value="male" checked />
-				<label for="male">Male</label>
-				<input name="sex" type="radio" id="female" value="female" />
-				<label for="female">Female</label>
+				<div>
+					<input name="sex" type="checkbox" id="male" checked />
+					<label for="male">Male</label>
+					<input name="sex" type="checkbox" id="female" />
+					<label for="female">Female</label>
+				</div>
 			</fieldset>
-			<fieldset name="options">
+			<fieldset id="options" name="options">
 				<legend>Options</legend>
-				<label for="minFlaws">Minimum flaws:</label>
-				<input id="minFlaws" type="number" value=1 required />
-				<label for="maxFlaws">Maximum flaws:</label>
-				<input id="maxFlaws" type="number" value=3 required />
-				<label for="minMotives">Minimum motivations:</label>
-				<input id="minMotives" type="number" value=1 required />
-				<label for="maxMotives">Maximum motivations:</label>
-				<input id="maxMotives" type="number" value=3 required />
+				<div>
+					<label for="minFlaws">Minimum flaws:</label><br />
+					<input id="minFlaws" type="number" value=1 required />
+				</div>
+				<div>
+					<label for="maxFlaws">Maximum flaws:</label><br />
+					<input id="maxFlaws" type="number" value=3 required />
+				</div>
+				<div>
+					<label for="minMotives">Minimum motivations:</label><br />
+					<input id="minMotives" type="number" value=1 required />
+				</div>
+				<div>
+					<label for="maxMotives">Maximum motivations:</label><br />
+					<input id="maxMotives" type="number" value=3 required />
+				</div>
 			</fieldset>
 			<button type="button" name="submit" onclick="chargen()">Generate</button>
 			<output id="output"></output>

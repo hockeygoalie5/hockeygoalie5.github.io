@@ -1,5 +1,5 @@
 var speciesList = {
-    "human":"Human",
+	"human":"Human",
 	"unathi":"Unathi",
 	"tajara":"Tajara",
 	"vox":"Vox Pariah",
@@ -55,66 +55,66 @@ var cyborgModules = [
 ];
 // stolen from http://www.springhole.net/writing_roleplaying_randomators/character-flaws.htm
 var flaws = [
-    "has a drug addiction",
-    "is afraid of a common animal",
-    "is afraid of a common situation",
-    "is allergic to a common thing",
-    "is arrogant",
-    "is bigoted",
-    "is chronically ill",
-    "is controlling",
-    "is obsessive",
-    "is egocentric",
-    "is abusive",
-    "is very sensitive",
-    "is forgetful",
-    "is greedy",
-    "is impatient",
-    "is lazy",
-    "is judgmental",
-    "is a chronic liar",
-    "is moody",
-    "is a drama queen",
-    "is paranoid",
-    "is petty",
-    "is overly protective",
-    "is power hungry",
-    "is prejudiced",
-    "is reckless",
-    "is sadistic",
-    "is selfish",
-    "is short-sighted",
-    "is hot headed",
-    "is socially inept",
-    "is spiteful",
-    "is whiny"
+	"has a drug addiction",
+	"is afraid of a common animal",
+	"is afraid of a common situation",
+	"is allergic to a common thing",
+	"is arrogant",
+	"is bigoted",
+	"is chronically ill",
+	"is controlling",
+	"is obsessive",
+	"is egocentric",
+	"is abusive",
+	"is very sensitive",
+	"is forgetful",
+	"is greedy",
+	"is impatient",
+	"is lazy",
+	"is judgmental",
+	"is a chronic liar",
+	"is moody",
+	"is a drama queen",
+	"is paranoid",
+	"is petty",
+	"is overly protective",
+	"is power hungry",
+	"is prejudiced",
+	"is reckless",
+	"is sadistic",
+	"is selfish",
+	"is short-sighted",
+	"is hot headed",
+	"is socially inept",
+	"is spiteful",
+	"is whiny"
 ];
 // kinda stolen from http://www.springhole.net/writing_roleplaying_randomators/character-motivation.htm
 var motives = [
-    "marry someone who isn't interested",
-    "kill someone who hurt $dative in the past",
-    "find a long lost friend",
-    "learn the true fate of someone who suddenly left $possesive life",
-    "protect the people $pronoun loves",
-    "change $possesive ways",
-    "escape from someone who intends to hurt $dative",
-    "fit in",
-    "exact revenge",
-    "move up in the world",
-    "seek adventure",
-    "exact justice",
-    "be in charge of everything",
-    "educate others",
-    "solve a mystery about $possesive past",
-    "help those who need it",
-    "fall in love",
-    "get rich",
-    "become famous",
-    "earn the respect of $possesive peers",
-    "have children",
-    "be attractive",
-    "live in peace",
-    "break an addiction or bad habit",
+	"marry someone who is out of $possesive league",
+	"kill someone who hurt $dative in the past",
+	"find a long lost friend",
+	"learn the true fate of someone who suddenly left $possesive life",
+	"protect the people $pronoun loves",
+	"change $possesive ways",
+	"escape from someone who intends to hurt $dative",
+	"fit in",
+	"exact revenge",
+	"move up in the world",
+	"seek adventure",
+	"exact justice",
+	"be in charge of everything",
+	"educate others",
+	"solve a mystery about $possesive past",
+	"help those who need it",
+	"fall in love",
+	"get rich",
+	"become famous",
+	"earn the respect of $possesive peers",
+	"have children",
+	"be attractive",
+	"live in peace",
+	"break an addiction or bad habit"
 ];
 var pronoun = {
 	"male":"he",
@@ -142,127 +142,127 @@ var reflexive = {
 };
 var hair = {
 	"human": [
-	     "short hair",
-	     "cut hair",
-	     "flaired hair",
-	     "shoulder-length hair",
-	     "long hair",
-	     "very long hair",
-	     "a long fringe",
-	     "a longer fringe",
-	     "half-banged hair",
-	     "a ponytail",
-	     "a side ponytail",
-	     "parted hair",
-	     "a pompadour",
-	     "a quiff",
-	     "bedhead",
-	     "a beehive",
-	     "a bobcurl",
-	     "a bob",
-	     "a bowl cut",
-	     "a buzzcut",
-	     "a crewcut",
-	     "a combover",
-	     "a fatherly hairstyle",
-	     "a reverse mohawk",
-	     "devil locks",
-	     "dreadlocks",
-	     "curls",
-	     "an afro",
-	     "a big afro",
-	     "a flat top",
-	     "an emo hairstyle",
-	     "a long emo hairstyle",
-	     "a short overeye hairstyle",
-	     "a long overeye hairstyle",
-	     "a flow",
-	     "a feather top",
-	     "a hitop",
-	     "a mowhawk",
-	     "Adam Jensen hair",
-	     "gelled back hair",
-	     "a gentle hairstyle",
-	     "spiky hair",
-	     "kusanagi hair",
-	     "pigtails",
-	     "a hime cut",
-	     "a floor-length braid",
-	     "a medium braid",
-	     "a long braid",
-	     "an odango",
-	     "ombre hair",
-	     "an updo",
-	     "a skinhead hairstyle",
-	     "balding hair",
-	     "a family man hairstyle",
-	     "Drillruru hair",
-	     "a dandy pompadour",
-	     "poofy hair",
-	     "chrono hair",
-	     "Vegeta hair",
-	     "CIA hair",
-	     "Mulder hair",
-	     "Scully hair",
-	     "a nitori",
-	     "Joestar hair",
-	     "volaju hair",
-	     "short bangs",
-	     "half-shaved emo hair",
-	     "a bun",
-	     "a double bun"
-     ],
-    "unathi": [
-         "a bobcurl",
-         "a bob",
-         "a buzzcut",
-         "a mohawk",
-         "spiky hair",
-         "long spines",
-         "short spines",
-         "long frills",
-         "short frills",
-         "horns"
-    ],
-    "tajara": [
-         "a clean hairstyle",
-         "bangs",
-         "a braid",
-         "shaggy hair",
-         "a mohawk",
-         "plait hair",
-         "straight hair",
-         "long hair",
-         "a rat tail",
-         "spiky hair",
-         "messy hair"
+		"short hair",
+		"cut hair",
+		"flaired hair",
+		"shoulder-length hair",
+		"long hair",
+		"very long hair",
+		"a long fringe",
+		"a longer fringe",
+		"half-banged hair",
+		"a ponytail",
+		"a side ponytail",
+		"parted hair",
+		"a pompadour",
+		"a quiff",
+		"bedhead",
+		"a beehive",
+		"a bobcurl",
+		"a bob",
+		"a bowl cut",
+		"a buzzcut",
+		"a crewcut",
+		"a combover",
+		"a fatherly hairstyle",
+		"a reverse mohawk",
+		"devil locks",
+		"dreadlocks",
+		"curls",
+		"an afro",
+		"a big afro",
+		"a flat top",
+		"an emo hairstyle",
+		"a long emo hairstyle",
+		"a short overeye hairstyle",
+		"a long overeye hairstyle",
+		"a flow",
+		"a feather top",
+		"a hitop",
+		"a mowhawk",
+		"Adam Jensen hair",
+		"gelled back hair",
+		"a gentle hairstyle",
+		"spiky hair",
+		"kusanagi hair",
+		"pigtails",
+		"a hime cut",
+		"a floor-length braid",
+		"a medium braid",
+		"a long braid",
+		"an odango",
+		"ombre hair",
+		"an updo",
+		"a skinhead hairstyle",
+		"balding hair",
+		"a family man hairstyle",
+		"Drillruru hair",
+		"a dandy pompadour",
+		"poofy hair",
+		"chrono hair",
+		"Vegeta hair",
+		"CIA hair",
+		"Mulder hair",
+		"Scully hair",
+		"a nitori",
+		"Joestar hair",
+		"volaju hair",
+		"short bangs",
+		"half-shaved emo hair",
+		"a bun",
+		"a double bun"
+	],
+	"unathi": [
+		"a bobcurl",
+		"a bob",
+		"a buzzcut",
+		"a mohawk",
+		"spiky hair",
+		"long spines",
+		"short spines",
+		"long frills",
+		"short frills",
+		"horns"
+	],
+	"tajara": [
+		"a clean hairstyle",
+		"bangs",
+		"a braid",
+		"shaggy hair",
+		"a mohawk",
+		"plait hair",
+		"straight hair",
+		"long hair",
+		"a rat tail",
+		"spiky hair",
+		"messy hair"
 	],
 	"vox": [
-         "short quills", 
-         "kingly quills", 
-         "a quill mohawk"
-    ],
+		"short quills", 
+		"kingly quills", 
+		"a quill mohawk"
+	],
 	"resomi": [
-         "plumage",
-         "spiky hair"
+		"plumage",
+		"spiky hair"
 	],
 	"machine": [
-	     "a pink screen",
-	     "a red screen",
-	     "a green screen",
-	     "a blue screen",
-	     "a screen displaying breakout",
-	     "a screen displaying an eight",
-	     "a screen displaying goggles",
-	     "a screen displaying a heart",
-	     "a screen displaying an eye",
-	     "a screen displaying nature",
-	     "an orange screen",
-	     "a purple screen",
-	     "a screen displaying a shower",
-	     "a screen displaying static",
-	     "a yellow screen"
-    ]
+		"a pink screen",
+		"a red screen",
+		"a green screen",
+		"a blue screen",
+		"a screen displaying breakout",
+		"a screen displaying an eight",
+		"a screen displaying goggles",
+		"a screen displaying a heart",
+		"a screen displaying an eye",
+		"a screen displaying nature",
+		"an orange screen",
+		"a purple screen",
+		"a screen displaying a shower",
+		"a screen displaying static",
+		"a yellow screen"
+	]
 };
 var facialHair = {
 	"human": [
@@ -283,102 +283,104 @@ var facialHair = {
 		"an Adam Jensen beard",
 		"a Volaju beard",
 		"a dward beard"
-	 ],
+	],
 	"unathi": [
-        "Elvis sideburns"
+		"Elvis sideburns"
 	],
 	"tajara": [
-	    "sideburns",
-	    "a muttonchop",
-	    "a pencilstache",
-	    "a mustache",
-	    "a goatee",
-	    "a small mustache"
-    ]
+		"sideburns",
+		"a muttonchop",
+		"a pencilstache",
+		"a mustache",
+		"a goatee",
+		"a small mustache"
+	]
 };
 var hairColors = {
 	"human": [
-	    "natural black",
-	    "jet black",
-	    "medium brown",
-	    "chestnut brown",
-	    "light brown",
-	    "platinum blonde",
-	    "ash blonde",
-	    "strawberry blonde",
-	    "dark auburn",
-	    "light auburn",
-	    "golden blonde",
-	    "dark brown"
+		"natural black",
+		"jet black",
+		"medium brown",
+		"chestnut brown",
+		"light brown",
+		"platinum blonde",
+		"ash blonde",
+		"strawberry blonde",
+		"dark auburn",
+		"light auburn",
+		"golden blonde",
+		"dark brown"
 	],
 	"unathi": [
-	   	"tan",
+		"tan",
 		"green",
 		"turquoise"
 	],
 	"tajara": [
-	   	"tan",
-	    "brown",
-	    "dark brown",
-	    "light gray",
-	    "gray",
-	    "dark gray"
+		"tan",
+		"brown",
+		"dark brown",
+		"light gray",
+		"gray",
+		"dark gray"
 	],
 	"vox": [
-        "green"
+		"green"
 	],
-    "resomi": [
-        "green",
-        "orange",
-        "yellow",
-        "red",
-        "blue",
-        "indigo",
-        "violet"
-   ]
+	"resomi": [
+		"green",
+		"orange",
+		"yellow",
+		"red",
+		"blue",
+		"indigo",
+		"violet"
+	]
 };
 var skinTones = {
 	"human": [
-	    "pale skin",
-	    "white skin",
-	    "tan skin",
-	    "brown skin",
-	    "dark brown skin",
-	    "black skin"
-    ],
-    "unathi": [
-        "tan scales",
-        "green scales",
-        "turquoise scales"
+		"pale skin",
+		"white skin",
+		"tan skin",
+		"brown skin",
+		"dark brown skin",
+		"black skin"
+	],
+	"unathi": [
+		"tan scales",
+		"green scales",
+		"turquoise scales"
 	],
 	"tajara": [
-	    "tan fur",
-        "brown fur",
-        "dark brown fur",
-        "light gray fur",
-        "gray fur",
-        "dark gray fur"
-    ],
-    "resomi": [
-        "green feathers",
-        "orange feathers",
-        "yellow feathers",
-        "red feathers",
-        "blue feathers",
-        "indigo feathers",
-        "violet feathers"
-    ],
-    "skrell": [
-        "light green skin",
-        "green skin",
-        "turquoise skin",
-        "light blue skin",
-        "dark blue skin"
-    ]
+		"tan fur",
+		"brown fur",
+		"dark brown fur",
+		"light gray fur",
+		"gray fur",
+		"dark gray fur"
+	],
+	"resomi": [
+		"green feathers",
+		"orange feathers",
+		"yellow feathers",
+		"red feathers",
+		"blue feathers",
+		"indigo feathers",
+		"violet feathers"
+	],
+	"skrell": [
+		"light green skin",
+		"green skin",
+		"turquoise skin",
+		"light blue skin",
+		"dark blue skin"
+	]
 };
-var speciesDOM = document.querySelector("fieldset[name='species']");
-var jobsDOM = document.querySelector("fieldset[name='jobs']");
+var speciesDOM = document.getElementById("species");
+var jobsDOM = document.getElementById("jobs");
 for(var species in speciesList) {
+	var div = document.createElement("div");
+	speciesDOM.appendChild(div);
 	var input = document.createElement("input");
 	input.type = "checkbox";
 	input.id = species;
@@ -386,13 +388,15 @@ for(var species in speciesList) {
 	if(species == "human") {
 		input.checked = "checked";
 	}
-	speciesDOM.appendChild(input);
+	div.appendChild(input);
 	var label = document.createElement("label");
 	label.textContent = speciesList[species];
 	label.setAttribute("for", species);
-	speciesDOM.appendChild(label);
+	div.appendChild(label);
 }
 for(var job in jobs) {
+	var div = document.createElement("div");
+	jobsDOM.appendChild(div);
 	var input = document.createElement("input");
 	input.type = "checkbox";
 	input.id = job;
@@ -400,17 +404,17 @@ for(var job in jobs) {
 	if(job == "assistant") {
 		input.checked = "checked";
 	}
-	jobsDOM.appendChild(input);
+	div.appendChild(input);
 	var label = document.createElement("label");
 	label.textContent = jobs[job];
 	label.setAttribute("for", job);
-	jobsDOM.appendChild(label);
+	div.appendChild(label);
 }
 function getRandomInt(min, max) {
-	  return Math.floor(Math.random() * (max - min)) + min;
+	return Math.floor(Math.random() * (max - min)) + min;
 }
 String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+	return this.charAt(0).toUpperCase() + this.slice(1);
 }
 function replaceGender(string, sex) {
 	return string.replace("$Pronoun", pronoun[sex].capitalize()).replace("$Dative", dative[sex].capitalize()).replace("$Possesive", possesive[sex].capitalize()).replace("$Reflexive", reflexive[sex].capitalize()).replace("$pronoun", pronoun[sex]).replace("$dative", dative[sex]).replace("$possesive", possesive[sex]).replace("$reflexive", reflexive[sex]);
@@ -423,12 +427,13 @@ function chargen() {
 	var maxFlaws = parseInt(document.getElementById("maxFlaws").value);
 	var minMotives = parseInt(document.getElementById("minMotives").value);
 	var maxMotives = parseInt(document.getElementById("maxMotives").value);
-	var sex = document.querySelector("input[name='sex']:checked").value;
-	if(!selectedSpecies.length || !selectedJobs.length) {
-		output = "You must select at least one species and at least one job."
+	var sexes = document.querySelectorAll("input[name='sex']:checked");
+	if(!selectedSpecies.length || !selectedJobs.length || !sexes.length) {
+		output = "You must select at least one species, one job, and one sex."
 	} else {
 		var species = selectedSpecies[getRandomInt(0, selectedSpecies.length)].id;
 		var job = selectedJobs[getRandomInt(0, selectedJobs.length)].id;
+		var sex = sexes[getRandomInt(0, sexes.length)].id;
 		if(job == "ai") {
 			output = "An AI";
 			sex = "neuter";
@@ -439,10 +444,13 @@ function chargen() {
 		} else {
 			if(species == "diona") {
 				sex = "plural";
+				output = "A diona " + jobs[job];
 			} else if(species == "machine") {
 				sex = "neuter";
+				output = "An IPC " + jobs[job];
+			} else {
+				output = "A(n) " + sex + " " + speciesList[species] + " " + jobs[job];
 			}
-			output = "A(n) " + speciesList[species] + " " + jobs[job];
 		}
 		var skinTone;
 		var hairStyle;
