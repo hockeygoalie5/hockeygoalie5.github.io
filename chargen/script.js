@@ -562,7 +562,7 @@ function chargen() {
 			} else {
 				if(species == "diona") {
 					sex = "plural";
-					output += "A diona " + jobs[job];
+					output += "A Diona " + jobs[job];
 				} else if(species == "machine") {
 					sex = "neuter";
 					output += "An IPC " + jobs[job];
@@ -573,11 +573,11 @@ function chargen() {
 			var age = Math.min(Math.max(getRandomInt(minAge, maxAge + 1), ageLimits[species][0]), ageLimits[species][1]);
 			var birthYear = (new Date()).getFullYear() + 544 - age;
 			var birthDate = getRandomDate(new Date(birthYear, 0, 1), new Date(birthYear, 11, 31));
-			var skinTone;
-			var hairStyle;
-			var hairColor;
-			var facialHairStyle;
-			var facialHairColor;
+			var skinTone = "";
+			var hairStyle = "";
+			var hairColor = "";
+			var facialHairStyle = "";
+			var facialHairColor = "";
 			if(skinTones[species]) {
 				skinTone = skinTones[species][getRandomInt(0, skinTones[species].length)];
 				if(job == "ai" || job == "cyborg") {
