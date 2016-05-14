@@ -10,52 +10,96 @@
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 	<body>
-		<form>
+		<header><h1>SS13 Character Generator</h1></header>
+		<iframe name="dummy" style="display:none"></iframe>
+		<form id="chargen" target="dummy">
 			<fieldset id="species" name="species">
-				<legend>Species</legend>
-			</fieldset>
-			<div>
-				<label>Select:</label>
-				<button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
-				<button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
-			</div>
-			<fieldset id="jobs" name="jobs">
-				<legend>Occupations</legend>
-			</fieldset>
-			<div>
-				<label>Select:</label>
-				<button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
-				<button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
-			</div>
-			<fieldset id="sex" name="sex">
-				<legend>Sex</legend>
+				<legend><a href="#species">Species &dArr;</a></legend>
 				<div>
+					<label>Select:</label>
+					<button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
+					<button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="jobs" name="jobs">
+				<legend><a href="#jobs">Occupations &dArr;</a></legend>
+				<div>
+					<label>Select:</label>
+					<button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
+					<button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="religions" name="religions">
+				<legend><a href="#religions">Religions &dArr;</a></legend>
+				<div>
+					<label>Select:</label>
+					<button type="button" name="jobsSelectAll" onclick="select('religions', 'all')">All</button>
+					<button type="button" name="jobsSelectNone" onclick="select('religions', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="factions" name="factions">
+				<legend><a href="#factions">Factions &dArr;</a></legend>
+				<div>
+					<label>Select:</label>
+					<button type="button" name="jobsSelectAll" onclick="select('factions', 'all')">All</button>
+					<button type="button" name="jobsSelectNone" onclick="select('factions', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="homesystems" name="homesystems">
+				<legend><a href="#homesystems">Home Systems &dArr;</a></legend>
+				<div>
+					<label>Select:</label>
+					<button type="button" name="jobsSelectAll" onclick="select('homesystems', 'all')">All</button>
+					<button type="button" name="jobsSelectNone" onclick="select('homesystems', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="citizenship" name="citizenship">
+				<legend><a href="#citizenship">Citizenships &dArr;</a></legend>
+				<div>
+					<label>Select:</label>
+					<button type="button" name="jobsSelectAll" onclick="select('citizenship', 'all')">All</button>
+					<button type="button" name="jobsSelectNone" onclick="select('citizenship', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="relation" name="relation">
+				<legend><a href="#relation">NanoTrasen Relations &dArr;</a></legend>
+				<div>
+					<label>Select:</label>
+					<button type="button" name="jobsSelectAll" onclick="select('relation', 'all')">All</button>
+					<button type="button" name="jobsSelectNone" onclick="select('relation', 'none')">None</button>
+				</div>
+			</fieldset>
+			<fieldset id="options" name="options">
+				<legend><a href="#options">Sex, Age, and Options &dArr;</a></legend>
+				<div>
+					<label>Sex:</label><br />
 					<input name="sex" type="checkbox" id="male" checked />
 					<label for="male">Male</label>
 					<input name="sex" type="checkbox" id="female" />
 					<label for="female">Female</label>
 				</div>
+				<div>
+					<label>Age (respects species constraints):</label><br />
+					<input id="minAge" type="number" value=17 required /> - <input id="maxAge" type="number" value=100 required />
+				</div>
+				<div>
+					<label>Flaws:</label><br />
+					<input id="minFlaws" type="number" value=1 required /> - <input id="maxFlaws" type="number" value=3 required />
+				</div>
+				<div>
+					<label>Motivations:</label><br />
+					<input id="minMotives" type="number" value=1 required /> - <input id="maxMotives" type="number" value=3 required />
+				</div>
+				<div>
+					<label>Back Story Elements:</label><br />
+					<input id="minBackStory" type="number" value=1 required /> - <input id="maxBackStory" type="number" value=1 required />
+				</div>
+				<div>
+					<label>Characters to generate:</label><br />
+					<input id="charAmount" type="number" value=1 required />
+				</div>
 			</fieldset>
-			<fieldset id="options" name="options">
-				<legend>Options</legend>
-				<div>
-					<label for="minFlaws">Minimum flaws:</label><br />
-					<input id="minFlaws" type="number" value=1 required />
-				</div>
-				<div>
-					<label for="maxFlaws">Maximum flaws:</label><br />
-					<input id="maxFlaws" type="number" value=3 required />
-				</div>
-				<div>
-					<label for="minMotives">Minimum motivations:</label><br />
-					<input id="minMotives" type="number" value=1 required />
-				</div>
-				<div>
-					<label for="maxMotives">Maximum motivations:</label><br />
-					<input id="maxMotives" type="number" value=3 required />
-				</div>
-			</fieldset>
-			<button type="button" name="submit" onclick="chargen()">Generate</button>
+			<button type="submit" name="submit" onclick="chargen()">Generate</button>
 			<output id="output"></output>
 		</form>
         <script type="text/javascript" src="script.js"></script>

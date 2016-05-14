@@ -53,7 +53,6 @@ var cyborgModules = [
 	"Engineering",
 	"Janitor"
 ];
-// stolen from http://www.springhole.net/writing_roleplaying_randomators/character-flaws.htm
 var flaws = [
 	"has a drug addiction",
 	"is afraid of a common animal",
@@ -71,7 +70,7 @@ var flaws = [
 	"is greedy",
 	"is impatient",
 	"is lazy",
-	"is judgmental",
+	"is judgemental",
 	"is a chronic liar",
 	"is moody",
 	"is a drama queen",
@@ -87,9 +86,14 @@ var flaws = [
 	"is hot headed",
 	"is socially inept",
 	"is spiteful",
-	"is whiny"
+	"is whiny",
+	"is smelly",
+	"is sleazy",
+	"creeps people out",
+	"is easily stressed out",
+	"shuts down near people $pronoun has a crush on",
+	"is almost a sociopath"
 ];
-// kinda stolen from http://www.springhole.net/writing_roleplaying_randomators/character-motivation.htm
 var motives = [
 	"marry someone who is out of $possesive league",
 	"kill someone who hurt $dative in the past",
@@ -114,7 +118,10 @@ var motives = [
 	"have children",
 	"be attractive",
 	"live in peace",
-	"break an addiction or bad habit"
+	"break an addiction or bad habit",
+	"start $possesive own company",
+	"move somewhere new",
+	"prove $reflexive to others"
 ];
 var pronoun = {
 	"male":"he",
@@ -376,40 +383,130 @@ var skinTones = {
 		"dark blue skin"
 	]
 };
+var ageLimits = {
+	"human": [17, 100],
+	"unathi": [18, 60],
+	"tajara": [17, 80],
+	"vox": [17, 70],
+	"resomi": [12, 45],
+	"skrell": [19, 90],
+	"diona": [1, 300],
+	"machine": [1, 90]
+};
+var month = [
+	"January", 
+	"February", 
+	"March", 
+	"April", 
+	"May", 
+	"June",
+	"July", 
+	"August", 
+	"September", 
+	"October", 
+	"November", 
+	"December"
+];
+var ntRelations = {
+	"loyal":"loyal",
+	"supportive":"supportive",
+	"neutral":"neutral",
+	"sceptical":"sceptical",
+	"opposed":"opposed"
+};
+var homeSystems = {
+	"nyx":"Nyx",
+	"sol":"Sol",
+	"tauceti":"Tau Ceti",
+	"eum":"Epsilon Ursae Minoris",
+	"srandarr":"S'randarr",
+	"othersys":"a system which is not well known"
+};
+var citizenships = {
+	"earth":"Earth",
+	"mars":"Mars",
+	"moghes":"Moghes",
+	"ahdomai":"Ahdomai",
+	"qerrbalak":"Qerrbalak",
+	"nocitizen":"no government",
+	"othercitizen":"a not well known government"
+};
+var factions = {
+	"solgov":"the Sol Central Government",
+	"veymed":"Vey Med",
+	"ee":"Einstein Engines",
+	"ftu":"the Free Trade Union",
+	"nt":"NanoTrasen",
+	"wt":"Ward-Takashi GMB",
+	"ge":"Gilthari Exports",
+	"gm":"Grayson Manufactories Ltd.",
+	"aa":"Aether Atmospherics",
+	"zhp":"Zeng-Hu Pharmaceuticals",
+	"hi":"Hesphaistos Industries",
+	"nofaction":"no faction",
+	"otherfaction":"a not well known faction"
+};
+var religions = {
+	"unit":"Unitarianism",
+	"hindu":"Hinduism",
+	"buddhism":"Buddhism",
+	"islam":"Islam",
+	"christian":"Christianity",
+	"agnostic":"Agnosticism",
+	"deism":"Deism",
+	"noreligion":"no religion",
+	"otherreligion":"a not well known religion"
+};
+var backstories = [
+	"had a healthy childhood",
+	"lost one or both parents",
+	"was bullied by $possesive peers",
+	"was abused by $possesive family",
+	"didn't fit in",
+	"ran away from home",
+	"lost a friend",
+	"served in the military",
+	"performed poorly at work and was fired",
+	"excelled in school",
+	"was very poor",
+	"had a wealthy family",
+	"failed many classes",
+	"committed several crimes",
+	"did something very wrong $pronoun regrets",
+	"did something very wrong and doesn't regret"
+];
+function populateChoices(fieldset, choices, defaultChoice) {
+	for(var choice in choices) {
+		var div = document.createElement("div");
+		fieldset.appendChild(div);
+		var input = document.createElement("input");
+		input.type = "checkbox";
+		input.id = choice;
+		input.value = choice;
+		if(choice == defaultChoice) {
+			input.checked = "checked";
+		}
+		div.appendChild(input);
+		var label = document.createElement("label");
+		label.textContent = choices[choice];
+		label.setAttribute("for", choice);
+		div.appendChild(label);
+	}
+}
 var speciesDOM = document.getElementById("species");
 var jobsDOM = document.getElementById("jobs");
-for(var species in speciesList) {
-	var div = document.createElement("div");
-	speciesDOM.appendChild(div);
-	var input = document.createElement("input");
-	input.type = "checkbox";
-	input.id = species;
-	input.value = species;
-	if(species == "human") {
-		input.checked = "checked";
-	}
-	div.appendChild(input);
-	var label = document.createElement("label");
-	label.textContent = speciesList[species];
-	label.setAttribute("for", species);
-	div.appendChild(label);
-}
-for(var job in jobs) {
-	var div = document.createElement("div");
-	jobsDOM.appendChild(div);
-	var input = document.createElement("input");
-	input.type = "checkbox";
-	input.id = job;
-	input.value = job;
-	if(job == "assistant") {
-		input.checked = "checked";
-	}
-	div.appendChild(input);
-	var label = document.createElement("label");
-	label.textContent = jobs[job];
-	label.setAttribute("for", job);
-	div.appendChild(label);
-}
+var religionDOM = document.getElementById("religions");
+var factionDOM = document.getElementById("factions");
+var citizenshipDOM = document.getElementById("citizenship");
+var homeSystemDOM = document.getElementById("homesystems");
+var relationDOM = document.getElementById("relation");
+populateChoices(speciesDOM, speciesList, "human");
+populateChoices(jobsDOM, jobs, "assistant");
+populateChoices(religionDOM, religions, "noreligion");
+populateChoices(factionDOM, factions, "nofaction");
+populateChoices(citizenshipDOM, citizenships, "nocitizen");
+populateChoices(homeSystemDOM, homeSystems, "othersys");
+populateChoices(relationDOM, ntRelations, "neutral");
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -419,8 +516,15 @@ String.prototype.capitalize = function() {
 function replaceGender(string, sex) {
 	return string.replace("$Pronoun", pronoun[sex].capitalize()).replace("$Dative", dative[sex].capitalize()).replace("$Possesive", possesive[sex].capitalize()).replace("$Reflexive", reflexive[sex].capitalize()).replace("$pronoun", pronoun[sex]).replace("$dative", dative[sex]).replace("$possesive", possesive[sex]).replace("$reflexive", reflexive[sex]);
 }
+function getRandomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
 function chargen() {
-	var output = "";
+	var outputDOM = document.getElementById("output");
+	while(outputDOM.firstChild) {
+		outputDOM.removeChild(outputDOM.firstChild);
+	}
+	var formDOM = document.getElementById("chargen");
 	var selectedSpecies = speciesDOM.querySelectorAll("input:checked");
 	var selectedJobs = jobsDOM.querySelectorAll("input:checked");
 	var minFlaws = parseInt(document.getElementById("minFlaws").value);
@@ -428,149 +532,182 @@ function chargen() {
 	var minMotives = parseInt(document.getElementById("minMotives").value);
 	var maxMotives = parseInt(document.getElementById("maxMotives").value);
 	var sexes = document.querySelectorAll("input[name='sex']:checked");
-	if(!selectedSpecies.length || !selectedJobs.length || !sexes.length) {
-		output = "You must select at least one species, one job, and one sex."
+	var minAge = parseInt(document.getElementById("minAge").value);
+	var maxAge = parseInt(document.getElementById("maxAge").value);
+	var charAmount = Math.max(parseInt(document.getElementById("charAmount").value), 1);
+	var selectedReligions = religionDOM.querySelectorAll("input:checked");
+	var selectedFactions = factionDOM.querySelectorAll("input:checked");
+	var selectedHomeSystems = homeSystemDOM.querySelectorAll("input:checked");
+	var selectedCitizenships = citizenshipDOM.querySelectorAll("input:checked");
+	var selectedRelations = relationDOM.querySelectorAll("input:checked");
+	var minBackStory = parseInt(document.getElementById("minBackStory").value);
+	var maxBackStory = parseInt(document.getElementById("maxBackStory").value);
+	if(!formDOM.checkValidity() || !selectedSpecies.length || !selectedJobs.length || !sexes.length || !selectedReligions.length || !selectedFactions.length || !selectedHomeSystems.length || !selectedCitizenships.length || !selectedRelations.length)  {
+		output = "All choices must have at least one valid selection."
 	} else {
-		var species = selectedSpecies[getRandomInt(0, selectedSpecies.length)].id;
-		var job = selectedJobs[getRandomInt(0, selectedJobs.length)].id;
-		var sex = sexes[getRandomInt(0, sexes.length)].id;
-		if(job == "ai") {
-			output = "An AI";
-			sex = "neuter";
-		} else if(job == "cyborg") {
-			var module = cyborgModules[getRandomInt(0, cyborgModules.length)];
-			output = "A Cyborg with the " + module + " module";
-			sex = "neuter";
-		} else {
-			if(species == "diona") {
-				sex = "plural";
-				output = "A diona " + jobs[job];
-			} else if(species == "machine") {
+		while(charAmount) {
+			var output = "";
+			var species = selectedSpecies[getRandomInt(0, selectedSpecies.length)].id;
+			var job = selectedJobs[getRandomInt(0, selectedJobs.length)].id;
+			var sex = sexes[getRandomInt(0, sexes.length)].id;
+			if(job == "ai") {
+				output = "An AI";
 				sex = "neuter";
-				output = "An IPC " + jobs[job];
+				species = "machine";
+			} else if(job == "cyborg") {
+				var module = cyborgModules[getRandomInt(0, cyborgModules.length)];
+				output = "A Cyborg with the " + module + " module";
+				sex = "neuter";
+				species = "machine";
 			} else {
-				output = "A(n) " + sex + " " + speciesList[species] + " " + jobs[job];
+				if(species == "diona") {
+					sex = "plural";
+					output += "A diona " + jobs[job];
+				} else if(species == "machine") {
+					sex = "neuter";
+					output += "An IPC " + jobs[job];
+				} else {
+					output += "A " + sex + " " + speciesList[species] + " " + jobs[job];
+				}
 			}
-		}
-		var skinTone;
-		var hairStyle;
-		var hairColor;
-		var facialHairStyle;
-		var facialHairColor;
-		if(skinTones[species]) {
-			skinTone = skinTones[species][getRandomInt(0, skinTones[species].length)];
-			if(job == "ai" || job == "cyborg") {
-				skinTone = null;
+			var age = Math.min(Math.max(getRandomInt(minAge, maxAge + 1), ageLimits[species][0]), ageLimits[species][1]);
+			var birthYear = (new Date()).getFullYear() + 544 - age;
+			var birthDate = getRandomDate(new Date(birthYear, 0, 1), new Date(birthYear, 11, 31));
+			var skinTone;
+			var hairStyle;
+			var hairColor;
+			var facialHairStyle;
+			var facialHairColor;
+			if(skinTones[species]) {
+				skinTone = skinTones[species][getRandomInt(0, skinTones[species].length)];
+				if(job == "ai" || job == "cyborg") {
+					skinTone = null;
+				}
 			}
-		}
-		if(hair[species]) {
-			hairStyle = hair[species][getRandomInt(0, hair[species].length)];
-			if(Math.random() <= (1 / (hair[species].length + 1)) || job == "ai" || job == "cyborg" && species != "machine") {
-				hairStyle = null;
+			if(hair[species]) {
+				hairStyle = hair[species][getRandomInt(0, hair[species].length)];
+				if(Math.random() <= (1 / (hair[species].length + 1)) || job == "ai" || job == "cyborg" && species != "machine") {
+					hairStyle = null;
+				}
 			}
-		}
-		if(facialHair[species]) {
-			facialHairStyle = facialHair[species][getRandomInt(0, facialHair[species].length)];
-			if(Math.random() <= 0.6 || job == "ai" || job == "cyborg") {
-				facialHairStyle = null;
+			if(facialHair[species]) {
+				facialHairStyle = facialHair[species][getRandomInt(0, facialHair[species].length)];
+				if(Math.random() <= 0.6 || job == "ai" || job == "cyborg") {
+					facialHairStyle = null;
+				}
 			}
-		}
-		if(hairColors[species]) {
-			hairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
-			facialHairColor = hairColor;
-			if(Math.random() <= 0.3) {
-				facialHairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+			if(hairColors[species]) {
+				hairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+				facialHairColor = hairColor;
+				if(Math.random() <= 0.3) {
+					facialHairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+				}
 			}
-		}
-		if(hairStyle || facialHairStyle || skinTone) {
-			output += " with ";
-		}
-		if(skinTone) {
-			output += skinTone;
-			if(hairStyle && facialHairStyle) {
-				output += ", ";
-			} else if(hairStyle || facialHairStyle) {
-				output += " and ";
+			if(hairStyle || facialHairStyle || skinTone) {
+				output += " with ";
 			}
-		}
-		if(hairStyle) {
-			output += hairStyle;
-			if(hairColor) {
-				output += " that is " + hairColor;
+			if(skinTone) {
+				output += skinTone;
+				if(hairStyle && facialHairStyle) {
+					output += ", ";
+				} else if(hairStyle || facialHairStyle) {
+					output += " and ";
+				}
+			}
+			if(hairStyle) {
+				output += hairStyle;
+				if(hairColor) {
+					output += " that is " + hairColor;
+				}
+				if(facialHairStyle) {
+					output += ", and ";
+				}
 			}
 			if(facialHairStyle) {
-				output += ", and ";
-			}
-		}
-		if(facialHairStyle) {
-			output += facialHairStyle;
-			if(facialHairColor) {
-				output += " that is " + facialHairColor;
-			}
-		}
-		var flawAmt = getRandomInt(minFlaws, maxFlaws + 1);
-		var motiveAmt = getRandomInt(minMotives, maxMotives + 1);
-		var availableFlaws = flaws.slice(0);
-		var availableMotives = motives.slice(0);
-		var firstItem = true;
-		if(flawAmt > 0 && availableFlaws.length) {
-			output += ". " + pronoun[sex].capitalize() + " ";
-			while(flawAmt > 0 && availableFlaws.length) {
-				if((flawAmt == 1 || availableFlaws.length == 1) && !firstItem) {
-					output += ", and ";
-				} else if(!firstItem) {
-					output += ", ";
-				} else {
-					firstItem = false;
+				output += facialHairStyle;
+				if(facialHairColor) {
+					output += " that is " + facialHairColor;
 				}
-				var chosenFlaw = availableFlaws[getRandomInt(0, availableFlaws.length)];
-				output += replaceGender(chosenFlaw, sex);
-				availableFlaws.splice(availableFlaws.indexOf(chosenFlaw), 1);
-				flawAmt--;
 			}
-		}
-		firstItem = true;
-		if(motiveAmt > 0 && availableMotives.length) {
-			output += ". " + pronoun[sex].capitalize() + " wants to ";
-			while(motiveAmt > 0) {
-				if((motiveAmt == 1 || availableMotives.length == 1) && !firstItem) {
-					output += ", and ";
-				} else if(!firstItem) {
-					output += ", ";
-				} else {
-					firstItem = false;
+			output += ". " + pronoun[sex].capitalize() + " was born on " + birthDate.getDate() + ". " + month[birthDate.getMonth()] + ", " + birthDate.getFullYear();
+			output += " and is " + age + " Solar years old";
+			var homeSystem = homeSystems[selectedHomeSystems[getRandomInt(0, selectedHomeSystems.length)].id];
+			var citizenship = citizenships[selectedCitizenships[getRandomInt(0, selectedCitizenships.length)].id];
+			output += ". " + homeSystem.capitalize() + " is " + possesive[sex] + " home system";
+			output += " and " + pronoun[sex] + " is currently a citizen of " + citizenship;
+			var religion = religions[selectedReligions[getRandomInt(0, selectedReligions.length)].id];
+			output += ". " + pronoun[sex].capitalize() + " is a follower of " + religion;
+			var flawAmt = getRandomInt(minFlaws, maxFlaws + 1);
+			var motiveAmt = getRandomInt(minMotives, maxMotives + 1);
+			var backStoryAmt = getRandomInt(minBackStory, maxBackStory + 1);
+			var availableFlaws = flaws.slice(0);
+			var availableMotives = motives.slice(0);
+			var availableBackStory = backstories.slice(0);
+			var firstItem = true;
+			if(backStoryAmt > 0 && availableBackStory.length) {
+				output += ". Growing up, " + pronoun[sex] + " ";
+				while(backStoryAmt > 0) {
+					if((backStoryAmt == 1 || availableBackStory.length == 1) && !firstItem) {
+						output += ", and ";
+					} else if(!firstItem) {
+						output += ", ";
+					} else {
+						firstItem = false;
+					}
+					var chosenBackStory = availableBackStory[getRandomInt(0, availableBackStory.length)];
+					output += replaceGender(chosenBackStory, sex);
+					availableBackStory.splice(availableBackStory.indexOf(chosenBackStory), 1);
+					backStoryAmt--;
 				}
-				var chosenMotive = availableMotives[getRandomInt(0, availableMotives.length)];
-				output += replaceGender(chosenMotive, sex);
-				availableMotives.splice(availableMotives.indexOf(chosenMotive), 1);
-				motiveAmt--;
 			}
+			firstItem = true;
+			if(flawAmt > 0 && availableFlaws.length) {
+				output += ". " + pronoun[sex].capitalize() + " ";
+				while(flawAmt > 0 && availableFlaws.length) {
+					if((flawAmt == 1 || availableFlaws.length == 1) && !firstItem) {
+						output += ", and ";
+					} else if(!firstItem) {
+						output += ", ";
+					} else {
+						firstItem = false;
+					}
+					var chosenFlaw = availableFlaws[getRandomInt(0, availableFlaws.length)];
+					output += replaceGender(chosenFlaw, sex);
+					availableFlaws.splice(availableFlaws.indexOf(chosenFlaw), 1);
+					flawAmt--;
+				}
+			}
+			firstItem = true;
+			if(motiveAmt > 0 && availableMotives.length) {
+				output += ". " + pronoun[sex].capitalize() + " wants to ";
+				while(motiveAmt > 0) {
+					if((motiveAmt == 1 || availableMotives.length == 1) && !firstItem) {
+						output += ", and ";
+					} else if(!firstItem) {
+						output += ", ";
+					} else {
+						firstItem = false;
+					}
+					var chosenMotive = availableMotives[getRandomInt(0, availableMotives.length)];
+					output += replaceGender(chosenMotive, sex);
+					availableMotives.splice(availableMotives.indexOf(chosenMotive), 1);
+					motiveAmt--;
+				}
+			}
+			var relation = ntRelations[selectedRelations[getRandomInt(0, selectedRelations.length)].id];
+			output += ". NanoTrasen views " + dative[sex] + " as " + relation + " to the company";
+			var faction = factions[selectedFactions[getRandomInt(0, selectedFactions.length)].id];
+			output += ". " + pronoun[sex].capitalize() + " is a member of " + faction;
+			output += "."
+			charAmount--;
+			var p = document.createElement("p");
+			outputDOM.appendChild(p);
+			p.textContent = output;
 		}
-		output += "."
 	}
-	var outputDOM = document.getElementById("output");
-	var p;
-	if(outputDOM.firstChild)
-		p = outputDOM.firstChild;
-	else {
-		p = document.createElement("p");
-		outputDOM.appendChild(p);
-	}
-	p.textContent = output;
 }
 function select(section, what) {
-	var checkboxes;
-	switch(section) {
-		case "species":
-			checkboxes = speciesDOM.querySelectorAll("input[type='checkbox']");
-			break;
-		case "jobs":
-			checkboxes = jobsDOM.querySelectorAll("input[type='checkbox']");
-			break;
-		default:
-			checkboxes = speciesDOM.querySelectorAll("input[type='checkbox']");
-			break;
-	}
+	var checkboxes = document.getElementById(section).querySelectorAll("input[type='checkbox']");
 	switch(what) {
 		case "all":
 			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
