@@ -54,98 +54,118 @@ var cyborgModules = [
 	"Janitor"
 ];
 var flaws = [
-	"has a drug addiction",
-	"is afraid of a common animal",
-	"is afraid of a common situation",
-	"is allergic to a common thing",
-	"is arrogant",
-	"is bigoted",
-	"is chronically ill",
-	"is controlling",
-	"is obsessive",
-	"is egocentric",
-	"is abusive",
-	"is very sensitive",
-	"is forgetful",
-	"is greedy",
-	"is impatient",
-	"is lazy",
-	"is judgemental",
-	"is a chronic liar",
-	"is moody",
-	"is a drama queen",
-	"is paranoid",
-	"is petty",
-	"is overly protective",
-	"is power hungry",
-	"is prejudiced",
-	"is reckless",
-	"is sadistic",
-	"is selfish",
-	"is short-sighted",
-	"is hot headed",
-	"is socially inept",
-	"is spiteful",
-	"is whiny",
-	"is smelly",
-	"is sleazy",
-	"creeps people out",
-	"is easily stressed out",
-	"shuts down near people $pronoun has a crush on",
-	"is almost a sociopath"
+	"$has a drug addiction",
+	"$is afraid of a common animal",
+	"$is afraid of a common situation",
+	"$is allergic to a common thing",
+	"$is arrogant",
+	"$is bigoted",
+	"$is chronically ill",
+	"$is controlling",
+	"$is obsessive",
+	"$is egocentric",
+	"$is abusive",
+	"$is very sensitive",
+	"$is forgetful",
+	"$is greedy",
+	"$is impatient",
+	"$is lazy",
+	"$is judgmental",
+	"$is a chronic liar",
+	"$is moody",
+	"$is a drama queen",
+	"$is paranoid",
+	"$is petty",
+	"$is overly protective",
+	"$is power hungry",
+	"$is prejudiced",
+	"$is reckless",
+	"$is sadistic",
+	"$is selfish",
+	"$is short-sighted",
+	"$is hot headed",
+	"$is socially inept",
+	"$is spiteful",
+	"$is whiny",
+	"$is smelly",
+	"$is sleazy",
+	"$is creepy",
+	"$is easily stressed out",
+	"$is almost a sociopath",
+	"$is really shy",
+	"dislike$s something that is popular",
+	"like$s something that is unpopular"
 ];
 var motives = [
-	"marry someone who is out of $possesive league",
-	"kill someone who hurt $dative in the past",
-	"find a long lost friend",
-	"learn the true fate of someone who suddenly left $possesive life",
-	"protect the people $pronoun loves",
-	"change $possesive ways",
+	"woo someone who is out of $possessive league",
+	"learn the true fate of someone who suddenly left $possessive life",
+	"protect the people $pronoun love$s",
+	"change $possessive ways",
 	"escape from someone who intends to hurt $dative",
 	"fit in",
 	"exact revenge",
 	"move up in the world",
 	"seek adventure",
-	"exact justice",
 	"be in charge of everything",
 	"educate others",
-	"solve a mystery about $possesive past",
+	"solve a mystery about $possessive past",
 	"help those who need it",
 	"fall in love",
 	"get rich",
 	"become famous",
-	"earn the respect of $possesive peers",
+	"earn the respect of $possessive peers",
 	"have children",
 	"be attractive",
 	"live in peace",
 	"break an addiction or bad habit",
-	"start $possesive own company",
+	"start $possessive own company",
 	"move somewhere new",
-	"prove $reflexive to others"
+	"prove $reflexive to others",
+	"go out with a bang",
+	"leave a legacy",
+	"achieve something major in $possessive field"
 ];
-var pronoun = {
-	"male":"he",
-	"female":"she",
-	"plural":"they",
-	"neuter":"it"
-};
-var dative = {
-	"male":"him",
-	"female":"her",
-	"plural":"them",
-	"neuter":"it"
-};
-var possesive = {
-	"male":"his",
-	"female":"her",
-	"plural":"their",
-	"neuter":"its"
-};
-var reflexive = {
-	"male":"himself",
-	"female":"herself",
-	"plural":"themselves",
-	"neuter":"itself"
+var genderReplacements = {
+	"male": {
+		"$pronoun":"he",
+		"$dative":"him",
+		"$possessive":"his",
+		"$reflexive":"himself",
+		"$is":"is",
+		"$was":"was",
+		"$has":"has",
+		"$s":"s"
+	},
+	"female": {
+		"$pronoun":"she",
+		"$dative":"her",
+		"$possessive":"her",
+		"$reflexive":"herself",
+		"$is":"is",
+		"$was":"was",
+		"$has":"has",
+		"$s":"s"
+	},
+	"plural": {
+		"$pronoun":"they",
+		"$dative":"them",
+		"$possessive":"their",
+		"$reflexive":"themselves",
+		"$is":"are",
+		"$was":"were",
+		"$has":"have",
+		"$s":""
+	},
+	"neuter": {
+		"$pronoun":"it",
+		"$dative":"it",
+		"$possessive":"its",
+		"$reflexive":"itself",
+		"$is":"is",
+		"$was":"was",
+		"$has":"has",
+		"$s":"s"
+	}
 };
 var hair = {
 	"human": [
@@ -391,7 +411,8 @@ var ageLimits = {
 	"resomi": [12, 45],
 	"skrell": [19, 90],
 	"diona": [1, 300],
-	"machine": [1, 90]
+	"machine": [1, 90],
+	"synthetic": [1, 90]
 };
 var month = [
 	"January", 
@@ -460,20 +481,22 @@ var religions = {
 var backstories = [
 	"had a healthy childhood",
 	"lost one or both parents",
-	"was bullied by $possesive peers",
-	"was abused by $possesive family",
+	"was bullied by $possessive peers",
+	"was abused by $possessive family",
 	"didn't fit in",
 	"ran away from home",
 	"lost a friend",
 	"served in the military",
-	"performed poorly at work and was fired",
+	"performed poorly at work and faced consequences",
 	"excelled in school",
-	"was very poor",
+	"$was very poor",
 	"had a wealthy family",
 	"failed many classes",
 	"committed several crimes",
-	"did something very wrong $pronoun regrets",
-	"did something very wrong and doesn't regret"
+	"did something very wrong $pronoun regret$s",
+	"did something very wrong, but without regrets",
+	"made a mistake $pronoun regret$s",
+	"accidentally hurt someone $pronoun care$s about"
 ];
 function populateChoices(fieldset, choices, defaultChoice) {
 	for(var choice in choices) {
@@ -514,7 +537,15 @@ String.prototype.capitalize = function() {
 	return this.charAt(0).toUpperCase() + this.slice(1);
 }
 function replaceGender(string, sex) {
-	return string.replace("$Pronoun", pronoun[sex].capitalize()).replace("$Dative", dative[sex].capitalize()).replace("$Possesive", possesive[sex].capitalize()).replace("$Reflexive", reflexive[sex].capitalize()).replace("$pronoun", pronoun[sex]).replace("$dative", dative[sex]).replace("$possesive", possesive[sex]).replace("$reflexive", reflexive[sex]);
+	for(var keyword in genderReplacements[sex]) {
+		var replacement = genderReplacements[sex][keyword];
+		// using split().join() because it's probably easier than escaping a regexp to make the search global
+		string = string.split(keyword).join(replacement);
+		keyword = "$" + keyword.substr(1).capitalize();
+		replacement = replacement.capitalize();
+		string = string.split(keyword).join(replacement);
+	}
+	return string;
 }
 function getRandomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -553,12 +584,12 @@ function chargen() {
 			if(job == "ai") {
 				output = "An AI";
 				sex = "neuter";
-				species = "machine";
+				species = "synthetic";
 			} else if(job == "cyborg") {
 				var module = cyborgModules[getRandomInt(0, cyborgModules.length)];
 				output = "A Cyborg with the " + module + " module";
 				sex = "neuter";
-				species = "machine";
+				species = "synthetic";
 			} else {
 				if(species == "diona") {
 					sex = "plural";
@@ -570,9 +601,17 @@ function chargen() {
 					output += "A " + sex + " " + speciesList[species] + " " + jobs[job];
 				}
 			}
-			var age = Math.min(Math.max(getRandomInt(minAge, maxAge + 1), ageLimits[species][0]), ageLimits[species][1]);
-			var birthYear = (new Date()).getFullYear() + 544 - age;
+			minAge = Math.min(Math.max(minAge, ageLimits[species][0]), ageLimits[species][1]);
+			maxAge = Math.min(Math.max(maxAge, ageLimits[species][0]), ageLimits[species][1]);
+			var age = getRandomInt(minAge, maxAge + 1);
+			var today = new Date();
+			var birthYear = today.getFullYear() + 544 - age;
 			var birthDate = getRandomDate(new Date(birthYear, 0, 1), new Date(birthYear, 11, 31));
+			// if their birthday hasn't happened yet this year, then they were born a year earlier than birth year - age.
+			if(today.getMonth() < birthDate.getMonth() || (today.getMonth() == birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+				birthYear--;
+				birthDate.setFullYear(birthYear);
+			}
 			var skinTone = "";
 			var hairStyle = "";
 			var hairColor = "";
@@ -617,7 +656,7 @@ function chargen() {
 			if(hairStyle) {
 				output += hairStyle;
 				if(hairColor) {
-					output += " that is " + hairColor;
+					output += " colored " + hairColor;
 				}
 				if(facialHairStyle) {
 					output += ", and ";
@@ -626,17 +665,19 @@ function chargen() {
 			if(facialHairStyle) {
 				output += facialHairStyle;
 				if(facialHairColor) {
-					output += " that is " + facialHairColor;
+					output += " colored " + facialHairColor;
 				}
 			}
-			output += ". " + pronoun[sex].capitalize() + " was born on " + birthDate.getDate() + ". " + month[birthDate.getMonth()] + ", " + birthDate.getFullYear();
-			output += " and is " + age + " Solar years old";
+			output += ". $Pronoun $was born on " + birthDate.getDate() + ". " + month[birthDate.getMonth()] + ", " + birthDate.getFullYear();
+			output += " and $is " + age + " Solar years old";
 			var homeSystem = homeSystems[selectedHomeSystems[getRandomInt(0, selectedHomeSystems.length)].id];
 			var citizenship = citizenships[selectedCitizenships[getRandomInt(0, selectedCitizenships.length)].id];
-			output += ". " + homeSystem.capitalize() + " is " + possesive[sex] + " home system";
-			output += " and " + pronoun[sex] + " is currently a citizen of " + citizenship;
+			output += ". " + homeSystem.capitalize() + " is $possessive home system";
+			if(species != "synthetic") {
+				output += " and $pronoun $is currently a citizen of " + citizenship;
+			}
 			var religion = religions[selectedReligions[getRandomInt(0, selectedReligions.length)].id];
-			output += ". " + pronoun[sex].capitalize() + " is a follower of " + religion;
+			output += ". $Pronoun $is a follower of " + religion;
 			var flawAmt = getRandomInt(minFlaws, maxFlaws + 1);
 			var motiveAmt = getRandomInt(minMotives, maxMotives + 1);
 			var backStoryAmt = getRandomInt(minBackStory, maxBackStory + 1);
@@ -645,7 +686,7 @@ function chargen() {
 			var availableBackStory = backstories.slice(0);
 			var firstItem = true;
 			if(backStoryAmt > 0 && availableBackStory.length) {
-				output += ". Growing up, " + pronoun[sex] + " ";
+				output += ". In the past, $pronoun ";
 				while(backStoryAmt > 0) {
 					if((backStoryAmt == 1 || availableBackStory.length == 1) && !firstItem) {
 						output += ", and ";
@@ -655,14 +696,14 @@ function chargen() {
 						firstItem = false;
 					}
 					var chosenBackStory = availableBackStory[getRandomInt(0, availableBackStory.length)];
-					output += replaceGender(chosenBackStory, sex);
+					output += chosenBackStory;
 					availableBackStory.splice(availableBackStory.indexOf(chosenBackStory), 1);
 					backStoryAmt--;
 				}
 			}
 			firstItem = true;
 			if(flawAmt > 0 && availableFlaws.length) {
-				output += ". " + pronoun[sex].capitalize() + " ";
+				output += ". $Pronoun ";
 				while(flawAmt > 0 && availableFlaws.length) {
 					if((flawAmt == 1 || availableFlaws.length == 1) && !firstItem) {
 						output += ", and ";
@@ -672,14 +713,14 @@ function chargen() {
 						firstItem = false;
 					}
 					var chosenFlaw = availableFlaws[getRandomInt(0, availableFlaws.length)];
-					output += replaceGender(chosenFlaw, sex);
+					output += chosenFlaw;
 					availableFlaws.splice(availableFlaws.indexOf(chosenFlaw), 1);
 					flawAmt--;
 				}
 			}
 			firstItem = true;
 			if(motiveAmt > 0 && availableMotives.length) {
-				output += ". " + pronoun[sex].capitalize() + " wants to ";
+				output += ". $Pronoun want$s to ";
 				while(motiveAmt > 0) {
 					if((motiveAmt == 1 || availableMotives.length == 1) && !firstItem) {
 						output += ", and ";
@@ -689,16 +730,17 @@ function chargen() {
 						firstItem = false;
 					}
 					var chosenMotive = availableMotives[getRandomInt(0, availableMotives.length)];
-					output += replaceGender(chosenMotive, sex);
+					output += chosenMotive;
 					availableMotives.splice(availableMotives.indexOf(chosenMotive), 1);
 					motiveAmt--;
 				}
 			}
 			var relation = ntRelations[selectedRelations[getRandomInt(0, selectedRelations.length)].id];
-			output += ". NanoTrasen views " + dative[sex] + " as " + relation + " to the company";
+			output += ". NanoTrasen views $dative as " + relation + " to the company";
 			var faction = factions[selectedFactions[getRandomInt(0, selectedFactions.length)].id];
-			output += ". " + pronoun[sex].capitalize() + " is a member of " + faction;
+			output += ". $Pronoun $is a member of " + faction;
 			output += "."
+			output = replaceGender(output, sex);
 			charAmount--;
 			var p = document.createElement("p");
 			outputDOM.appendChild(p);
