@@ -41,18 +41,92 @@ var jobs = {
 	"ai":"AI",
 	"cyborg":"Cyborg"
 };
-var cyborgModules = [
-	"Standard",
-	"Service",
-	"Clerical",
-	"Research",
-	"Miner",
-	"Crisis",
-	"Surgeon",
-	"Security",
-	"Engineering",
-	"Janitor"
+var cyborgTypes = [
+	"A Robot",
+	"An Android",
+	"A Cyborg"
 ];
+var cyborgModules = {
+	"standard": [
+		"a basic",
+		"a tripodal android",
+		"a default tripod",
+		"a hover drone",
+		"an eyebot"
+	],
+	"service": [
+		"a Kent",
+		"a brobot",
+		"a rich",
+		"a default butler",
+		"a waitress",
+		"a service hover drone",
+		"a hydroponics hover drone",
+		"an eyebot"
+	],
+	"clerical": [
+		"a Kent",
+		"a brobot",
+		"a rich",
+		"a default butler",
+		"a waitress",
+		"a service hover drone",
+		"an eyebot"
+	],
+	"research": [
+		"a tripod android",
+		"a hover drone",
+		"an eyebot"
+	],
+	"miner": [
+		"a basic",
+		"a bipedal android",
+		"a treadhead",
+		"a hover drone",
+		"an eyebot"
+	],
+	"crisis": [
+		"a basic",
+		"a standard hover bot",
+		"a bipedal android",
+		"a needly",
+		"a medical hover drone",
+		"a chemistry hover drone",
+		"an eyebot"
+	],
+	"surgeon": [
+		"a basic",
+		"a standard hover bot",
+		"a bipedal android",
+		"a needly",
+		"a hover drone",
+		"an eyebot"
+	],
+	"security": [
+		"a basic",
+		"a red knight",
+		"a black knight",
+		"a bloodhound",
+		"a treaded bloodhound",
+		"a hover drone",
+		"an eyebot"
+	],
+	"engineering": [
+		"a basic",
+		"an antique",
+		"a landmate",
+		"a treaded landmate",
+		"a hover drone",
+		"an eyebot"
+	],
+	"janitor": [
+		"a basic",
+		"a mopbot",
+		"a Mop Gear Rex",
+		"a hover drone",
+		"an eyebot"
+	]
+};
 var flaws = [
 	"$has a drug addiction",
 	"$is afraid of a common animal",
@@ -326,84 +400,86 @@ var facialHair = {
 	]
 };
 var hairColors = {
-	"human": [
-		"natural black",
-		"jet black",
-		"medium brown",
-		"chestnut brown",
-		"light brown",
-		"platinum blonde",
-		"ash blonde",
-		"strawberry blonde",
-		"dark auburn",
-		"light auburn",
-		"golden blonde",
-		"dark brown",
-		"light gray",
-		"gray",
-		"dark gray"
-	],
-	"unathi": [
-		"tan",
-		"green",
-		"turquoise"
-	],
-	"tajara": [
-		"tan",
-		"brown",
-		"dark brown",
-		"light gray",
-		"gray",
-		"dark gray"
-	],
-	"resomi": [
-		"green",
-		"orange",
-		"yellow",
-		"red",
-		"blue",
-		"indigo",
-		"violet"
-	]
+	"human": {
+		"natural black":"rgb(44, 34, 43)",
+		"jet black":"rgb(9, 8, 6)",
+		"medium brown":"rgb(78, 67, 63)",
+		"chestnut brown":"rgb(80, 68, 68)",
+		"light brown":"rgb(167, 133, 106)",
+		"platinum blonde":"rgb(202, 191, 177)",
+		"ash blonde":"rgb(222, 188, 153)",
+		"strawberry blonde":"rgb(165, 107, 70)",
+		"dark auburn":"rgb(83, 61, 50)",
+		"light auburn":"rgb(145, 85, 61)",
+		"golden blonde":"rgb(229, 200, 168)",
+		"dark brown":"rgb(59, 48, 36)",
+		"light gray":"rgb(214, 196, 194)",
+		"gray":"rgb(183, 166, 158)",
+		"dark gray":"rgb(113, 99, 90)",
+		"light red":"rgb(181, 82, 57)",
+		"dark red":"rgb(141, 74, 67)"
+	},
+	"unathi": {
+		"tan":"tan",
+		"green":"green",
+		"turquoise":"turquoise"
+	},
+	"tajara": {
+		"tan":"tan",
+		"brown":"rgb(78, 67, 63)",
+		"dark brown":"rgb(78, 67, 63)",
+		"light gray":"rgb(214, 196, 194)",
+		"gray":"rgb(183, 166, 158)",
+		"dark gray":"rgb(113, 99, 90)"
+	},
+	"resomi": {
+		"green":"green",
+		"orange":"orange",
+		"yellow":"yellow",
+		"red":"red",
+		"blue":"blue",
+		"indigo":"indigo",
+		"violet":"violet"
+	}
 };
 var skinTones = {
-	"human": [
-		"pale skin",
-		"white skin",
-		"tan skin",
-		"brown skin",
-		"dark brown skin",
-		"black skin"
-	],
-	"unathi": [
-		"tan scales",
-		"green scales",
-		"turquoise scales"
-	],
-	"tajara": [
-		"tan fur",
-		"brown fur",
-		"dark brown fur",
-		"light gray fur",
-		"gray fur",
-		"dark gray fur"
-	],
-	"resomi": [
-		"green feathers",
-		"orange feathers",
-		"yellow feathers",
-		"red feathers",
-		"blue feathers",
-		"indigo feathers",
-		"violet feathers"
-	],
-	"skrell": [
-		"light green skin",
-		"green skin",
-		"turquoise skin",
-		"light blue skin",
-		"dark blue skin"
-	]
+	"human": {
+		"pale skin":"rgb(237, 232, 226)",
+		"white skin":"rgb(255, 224, 189)",
+		"tan skin":"rgb(234, 192, 134)",
+		"brown skin":"rgb(224, 172, 105)",
+		"dark brown skin":"rgb(198, 134, 66)",
+		"black skin":"rgb(141, 85, 36)"
+	},
+	"unathi": {
+		"tan scales":"tan",
+		"green scales":"green",
+		"turquoise scales":"turquoise"
+	},
+	"tajara": {
+		"tan fur":"tan",
+		"brown fur":"rgb(78, 67, 63)",
+		"dark brown fur":"rgb(78, 67, 63)",
+		"light gray fur":"rgb(214, 196, 194)",
+		"gray fur":"rgb(183, 166, 158)",
+		"dark gray fur":"rgb(113, 99, 90)"
+	},
+	"resomi": {
+		"green feathers":"green",
+		"orange feathers":"orange",
+		"yellow feathers":"yellow",
+		"red feathers":"red",
+		"blue feathers":"blue",
+		"indigo feathers":"indigo",
+		"violet feathers":"violet"
+	},
+	"skrell": {
+		"light green skin":"greenyellow",
+		"green skin":"lightgreen",
+		"turquoise skin":"turquoise",
+		"light blue skin":"aquamarine",
+		"dark blue skin":"lightblue"
+	}
 };
 var ageLimits = {
 	"human": [17, 100],
@@ -500,6 +576,41 @@ var backstories = [
 	"made a mistake $pronoun regret$s",
 	"accidentally hurt someone $pronoun care$s about"
 ];
+var eyeColors = [
+	"green",
+	"blue",
+	"hazel",
+	"brown",
+	"violet",
+	"gray"
+];
+var cores = [
+	"a blue face",
+	"a red face",
+	"a rainbow",
+	"magma",
+	"a monochrome face",
+	"an inverted face",
+	"a green face",
+	"static",
+	"text",
+	"a smiley face",
+	"an angry face",
+	"the matrix",
+	"a dorf",
+	"bliss",
+	"a soviet insignia",
+	"$possessive trapped emotions",
+	"a heart line",
+	"talkative sound waves",
+	"helios",
+	"digging too deep",
+	"a goon",
+	"a database",
+	"a glitched man",
+	"a lonestar",
+	"a Nanotrasen logo"
+];
 function populateChoices(fieldset, choices, defaultChoice) {
 	for(var choice in choices) {
 		var div = document.createElement("div");
@@ -584,12 +695,15 @@ function chargen() {
 			var job = selectedJobs[getRandomInt(0, selectedJobs.length)].id;
 			var sex = sexes[getRandomInt(0, sexes.length)].id;
 			if(job == "ai") {
-				output = "An AI";
+				var core = cores[getRandomInt(0, cores.length)];
+				output = "An AI with a core displaying " + core;
 				sex = "neuter";
 				species = "synthetic";
 			} else if(job == "cyborg") {
-				var module = cyborgModules[getRandomInt(0, cyborgModules.length)];
-				output = "A Cyborg with the " + module + " module";
+				var module = Object.keys(cyborgModules)[getRandomInt(0, Object.keys(cyborgModules).length)];
+				var body = cyborgModules[module][getRandomInt(0, cyborgModules[module].length)];
+				var cyborgType = cyborgTypes[getRandomInt(0, cyborgTypes.length)];
+				output = cyborgType + " with the " + module + " module and " + body + " body";
 				sex = "neuter";
 				species = "synthetic";
 			} else {
@@ -601,7 +715,7 @@ function chargen() {
 					output += "An IPC " + jobs[job];
 				} else if(species == "vox") {
 					sex = "neuter";
-					output += "A Vox Pariah " +jobs[job];
+					output += "A Vox Pariah " + jobs[job];
 				} else {
 					output += "A " + sex + " " + speciesList[species] + " " + jobs[job];
 				}
@@ -622,30 +736,31 @@ function chargen() {
 			var hairColor = "";
 			var facialHairStyle = "";
 			var facialHairColor = "";
+			var eyeColor = "";
 			if(skinTones[species]) {
-				skinTone = skinTones[species][getRandomInt(0, skinTones[species].length)];
-				if(job == "ai" || job == "cyborg") {
-					skinTone = null;
-				}
+				skinTone = Object.keys(skinTones[species])[getRandomInt(0, Object.keys(skinTones[species]).length)];
 			}
 			if(hair[species]) {
 				hairStyle = hair[species][getRandomInt(0, hair[species].length)];
-				if((Math.random() <= (1 / (hair[species].length + 1)) && (species == "human" || species == "unathi")) || job == "ai" || job == "cyborg") {
+				if(Math.random() <= (1 / (hair[species].length + 1)) && (species == "human" || species == "unathi")) {
 					hairStyle = null;
 				}
 			}
 			if(facialHair[species]) {
 				facialHairStyle = facialHair[species][getRandomInt(0, facialHair[species].length)];
-				if(Math.random() <= 0.6 || job == "ai" || job == "cyborg" || (sex == "female" && species != "tajara")) {
+				if(Math.random() <= 0.6 || (sex == "female" && species != "tajara")) {
 					facialHairStyle = null;
 				}
 			}
 			if(hairColors[species]) {
-				hairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+				hairColor = Object.keys(hairColors[species])[getRandomInt(0, Object.keys(hairColors[species]).length)];
 				facialHairColor = hairColor;
 				if(Math.random() <= 0.3) {
-					facialHairColor = hairColors[species][getRandomInt(0, hairColors[species].length)];
+					facialHairColor = Object.keys(hairColors[species])[getRandomInt(0, Object.keys(hairColors[species]).length)];
 				}
+			}
+			if(species != "synthetic" && species != "machine" && species != "diona") {
+				eyeColor = eyeColors[getRandomInt(0, eyeColors.length)];
 			}
 			if(hairStyle || facialHairStyle || skinTone) {
 				output += " with ";
@@ -672,6 +787,9 @@ function chargen() {
 				if(facialHairColor) {
 					output += " colored " + facialHairColor;
 				}
+			}
+			if(eyeColor) {
+				output += ". $Possessive eyes are " + eyeColor;
 			}
 			output += ". $Pronoun $was born on " + birthDate.getDate() + ". " + month[birthDate.getMonth()] + ", " + birthDate.getFullYear();
 			output += " and $is " + age + " Solar years old";
@@ -753,6 +871,7 @@ function chargen() {
 			div.setAttribute("class", "charprev");
 			var bodyImage = document.createElement("img");
 			var bodyImagePath = "bodies/";
+			var eyeImagePath = "";
 			switch(species) {
 				case "human":
 					bodyImagePath += (sex == "male") ? "human-m.png" : "human-f.png";
@@ -764,25 +883,58 @@ function chargen() {
 					bodyImagePath += (sex == "male") ? "tajara-m.png" : "tajara-f.png";
 					break;
 				case "synthetic":
-					bodyImagePath += "404.png";
+					if(job == "ai") {
+						bodyImagePath += "cores/" + cores.indexOf(core) + ".gif";
+					} else {
+						bodyImagePath += "modules/" + module + "/" + cyborgModules[module].indexOf(body) + ".gif";
+						var eyeImagePath = "bodies/modules/" + module + "/" + cyborgModules[module].indexOf(body) + "-eyes.gif";
+					}
 					bodyImage.setAttribute("alt", "synthetic previews wip");
+					break;
 				default:
 					bodyImagePath += species + ".png";
 					break;
 			}
 			bodyImage.setAttribute("src", bodyImagePath);
 			div.appendChild(bodyImage);
-			if(hairStyle) {
-				var hairImage = document.createElement("img");
-				var hairImagePath = "hair/" + species + "/" + hair[species].indexOf(hairStyle) + ".png";
-				hairImage.setAttribute("src", hairImagePath);
-				div.appendChild(hairImage);
+			if(eyeImagePath) {
+				var eyeImage = document.createElement("img");
+				eyeImage.setAttribute("src", eyeImagePath);
+				div.appendChild(eyeImage);
+			}
+			if(skinTone) {
+				var skinToneOverlayImage = document.createElement("img");
+				skinToneOverlayImage.setAttribute("src", bodyImagePath);
+				var blendMode = "overlay";
+				if(species == "human") {
+					blendMode = "multiply";
+				}
+				skinToneOverlayImage.setAttribute("style", "mix-blend-mode: " + blendMode + "; top: -64px; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");");
+				div.appendChild(skinToneOverlayImage);
 			}
 			if(facialHairStyle) {
 				var facialHairImage = document.createElement("img");
 				var facialHairImagePath = "hair/" + species + "/facial/" + facialHair[species].indexOf(facialHairStyle) + ".png";
 				facialHairImage.setAttribute("src", facialHairImagePath);
 				div.appendChild(facialHairImage);
+				if(facialHairColor) {
+					var facialHairColorOverlayImage = document.createElement("img");
+					facialHairColorOverlayImage.setAttribute("src", facialHairImagePath);
+					facialHairColorOverlayImage.setAttribute("style", "mix-blend-mode: screen; top: -64px; filter: drop-shadow(0px 64px " + hairColors[species][facialHairColor] + ");");
+					div.appendChild(facialHairColorOverlayImage);
+				}
+			}
+			if(hairStyle) {
+				var hairImage = document.createElement("img");
+				var hairImagePath = "hair/" + species + "/" + hair[species].indexOf(hairStyle) + ".png";
+				hairImage.setAttribute("src", hairImagePath);
+				div.appendChild(hairImage);
+				if(hairColor) {
+					var hairColorOverlayImage = document.createElement("img");
+					hairColorOverlayImage.setAttribute("src", hairImagePath);
+					hairColorOverlayImage.setAttribute("style", "mix-blend-mode: screen; top: -64px; filter: drop-shadow(0px 64px " + hairColors[species][hairColor] + ");");
+					div.appendChild(hairColorOverlayImage);
+				}
 			}
 			p.appendChild(div);
 			charAmount--;
