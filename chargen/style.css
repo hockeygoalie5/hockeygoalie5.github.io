@@ -33,9 +33,16 @@ fieldset:target * {
 	padding: 1em;
 }
 
-#output p:nth-child(2n) {
-	background-color: black;
-	color: white;
+.charprev {
+	position: relative;
+	height: 64px;
+}
+
+.charprev img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 64px;
 }
 
 @-moz-document url-prefix() { 

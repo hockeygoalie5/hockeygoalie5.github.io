@@ -206,7 +206,7 @@ var hair = {
 		"a flow",
 		"a feather top",
 		"a hitop",
-		"a mowhawk",
+		"a mohawk",
 		"Adam Jensen hair",
 		"gelled back hair",
 		"a gentle hairstyle",
@@ -262,7 +262,8 @@ var hair = {
 		"long hair",
 		"a rat tail",
 		"spiky hair",
-		"messy hair"
+		"messy hair",
+		"ears"
 	],
 	"vox": [
 		"short quills", 
@@ -271,7 +272,8 @@ var hair = {
 	],
 	"resomi": [
 		"plumage",
-		"spiky hair"
+		"big ears",
+		"spiky feathers"
 	],
 	"machine": [
 		"a pink screen",
@@ -309,7 +311,7 @@ var facialHair = {
 		"a goatee",
 		"an Adam Jensen beard",
 		"a Volaju beard",
-		"a dward beard"
+		"a dwarf beard"
 	],
 	"unathi": [
 		"Elvis sideburns"
@@ -350,9 +352,6 @@ var hairColors = {
 		"light gray",
 		"gray",
 		"dark gray"
-	],
-	"vox": [
-		"green"
 	],
 	"resomi": [
 		"green",
@@ -597,6 +596,9 @@ function chargen() {
 				} else if(species == "machine") {
 					sex = "neuter";
 					output += "An IPC " + jobs[job];
+				} else if(species == "vox") {
+					sex = "neuter";
+					output += "A Vox Pariah " +jobs[job];
 				} else {
 					output += "A " + sex + " " + speciesList[species] + " " + jobs[job];
 				}
@@ -625,13 +627,13 @@ function chargen() {
 			}
 			if(hair[species]) {
 				hairStyle = hair[species][getRandomInt(0, hair[species].length)];
-				if(Math.random() <= (1 / (hair[species].length + 1)) || job == "ai" || job == "cyborg" && species != "machine") {
+				if((Math.random() <= (1 / (hair[species].length + 1)) && (species == "human" || species == "unathi")) || job == "ai" || job == "cyborg") {
 					hairStyle = null;
 				}
 			}
 			if(facialHair[species]) {
 				facialHairStyle = facialHair[species][getRandomInt(0, facialHair[species].length)];
-				if(Math.random() <= 0.6 || job == "ai" || job == "cyborg") {
+				if(Math.random() <= 0.6 || job == "ai" || job == "cyborg" || (sex == "female" && species != "tajara")) {
 					facialHairStyle = null;
 				}
 			}
@@ -741,10 +743,49 @@ function chargen() {
 			output += ". $Pronoun $is a member of " + faction;
 			output += "."
 			output = replaceGender(output, sex);
-			charAmount--;
 			var p = document.createElement("p");
 			outputDOM.appendChild(p);
 			p.textContent = output;
+			var div = document.createElement("div");
+			div.setAttribute("class", "charprev");
+			var bodyImage = document.createElement("img");
+			var bodyImagePath = "bodies/";
+			switch(species) {
+				case "human":
+					bodyImagePath += (sex == "male") ? "human-m.png" : "human-f.png";
+					break;
+				case "skrell":
+					bodyImagePath += (sex == "male") ? "skrell-m.png" : "skrell-f.png";
+					break;
+				case "tajara":
+					bodyImagePath += (sex == "male") ? "tajara-m.png" : "tajara-f.png";
+					break;
+				case "synthetic":
+					bodyImagePath += "404.png";
+					bodyImage.setAttribute("alt", "synthetic previews wip");
+				default:
+					bodyImagePath += species + ".png";
+					break;
+			}
+			bodyImage.setAttribute("src", bodyImagePath);
+			div.appendChild(bodyImage);
+			if(hairStyle) {
+				var hairImage = document.createElement("img");
+				var hairImagePath = "hair/" + species + "/" + hair[species].indexOf(hairStyle) + ".png";
+				hairImage.setAttribute("src", hairImagePath);
+				div.appendChild(hairImage);
+			}
+			if(facialHairStyle) {
+				var facialHairImage = document.createElement("img");
+				var facialHairImagePath = "hair/" + species + "/facial/" + facialHair[species].indexOf(facialHairStyle) + ".png";
+				facialHairImage.setAttribute("src", facialHairImagePath);
+				div.appendChild(facialHairImage);
+			}
+			p.appendChild(div);
+			charAmount--;
+			if(charAmount) {
+				outputDOM.appendChild(document.createElement("hr"));
+			}
 		}
 	}
 }
