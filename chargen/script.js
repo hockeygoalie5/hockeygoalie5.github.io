@@ -338,7 +338,10 @@ var hairColors = {
 		"dark auburn",
 		"light auburn",
 		"golden blonde",
-		"dark brown"
+		"dark brown",
+		"light gray",
+		"gray",
+		"dark gray"
 	],
 	"unathi": [
 		"tan",
