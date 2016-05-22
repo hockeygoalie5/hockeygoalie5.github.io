@@ -433,13 +433,12 @@ var hairColors = {
 		"dark gray":"rgb(113, 99, 90)"
 	},
 	"resomi": {
-		"green":"green",
-		"orange":"orange",
-		"yellow":"yellow",
-		"red":"red",
-		"blue":"blue",
-		"indigo":"indigo",
-		"violet":"violet"
+		"green":"#8FD8A0",
+		"orange":"#DACC8F",
+		"yellow":"#CBD890",
+		"red":"#D9A790",
+		"blue":"#9ACCCD",
+		"purple":"#D18FD9",
 	}
 };
 var skinTones = {
@@ -465,13 +464,12 @@ var skinTones = {
 		"dark gray fur":"rgb(113, 99, 90)"
 	},
 	"resomi": {
-		"green feathers":"green",
-		"orange feathers":"orange",
-		"yellow feathers":"yellow",
-		"red feathers":"red",
-		"blue feathers":"blue",
-		"indigo feathers":"indigo",
-		"violet feathers":"violet"
+		"green feathers":"#8FD8A0",
+		"orange feathers":"#DACC8F",
+		"yellow feathers":"#CBD890",
+		"red feathers":"#D9A790",
+		"blue feathers":"#9ACCCD",
+		"purple feathers":"#D18FD9",
 	},
 	"skrell": {
 		"light green skin":"greenyellow",
@@ -869,6 +867,11 @@ function chargen() {
 			p.textContent = output;
 			var div = document.createElement("div");
 			div.setAttribute("class", "charprev");
+			// Chrome will not show the drop shadow if the image itself is hidden.
+			// For some reason, Chrome will only display the human body sprite out of bounds, anyway.
+			if(!!window.chrome && !!window.chrome.webstore) {
+				div.setAttribute("style", "overflow: visible;");
+			}
 			var bodyImage = document.createElement("img");
 			var bodyImagePath = "bodies/";
 			var eyeImagePath = "";
@@ -909,7 +912,9 @@ function chargen() {
 				if(species == "human") {
 					blendMode = "multiply";
 				}
-				skinToneOverlayImage.setAttribute("style", "mix-blend-mode: " + blendMode + "; top: -64px; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");");
+				var styleString = "top: -64px; mix-blend-mode: " + blendMode + "; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
+				styleString += " -webkit-filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
+				skinToneOverlayImage.setAttribute("style", styleString);
 				div.appendChild(skinToneOverlayImage);
 			}
 			if(facialHairStyle) {
@@ -920,7 +925,9 @@ function chargen() {
 				if(facialHairColor) {
 					var facialHairColorOverlayImage = document.createElement("img");
 					facialHairColorOverlayImage.setAttribute("src", facialHairImagePath);
-					facialHairColorOverlayImage.setAttribute("style", "mix-blend-mode: screen; top: -64px; filter: drop-shadow(0px 64px " + hairColors[species][facialHairColor] + ");");
+					var styleString = "top: -64px; mix-blend-mode: screen; filter: drop-shadow(0px 64px " + hairColors[species][facialHairColor] + ");";
+					styleString += " -webkit-filter: drop-shadow(0px 64px " + hairColors[species][facialHairColor] + ");";
+					facialHairColorOverlayImage.setAttribute("style", styleString);
 					div.appendChild(facialHairColorOverlayImage);
 				}
 			}
@@ -932,7 +939,9 @@ function chargen() {
 				if(hairColor) {
 					var hairColorOverlayImage = document.createElement("img");
 					hairColorOverlayImage.setAttribute("src", hairImagePath);
-					hairColorOverlayImage.setAttribute("style", "mix-blend-mode: screen; top: -64px; filter: drop-shadow(0px 64px " + hairColors[species][hairColor] + ");");
+					var styleString = "top: -64px; mix-blend-mode: screen; filter: drop-shadow(0px 64px " + hairColors[species][hairColor] + ");";
+					styleString += " -webkit-filter: drop-shadow(0px 64px " + hairColors[species][hairColor] + ");";
+					hairColorOverlayImage.setAttribute("style", styleString);
 					div.appendChild(hairColorOverlayImage);
 				}
 			}

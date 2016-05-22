@@ -9,16 +9,39 @@ legend a:hover {
 
 fieldset {
 	display: flex;
-	flex-flow: column wrap;
-	justify-content: flex-start;
+	flex-flow: row wrap;
 	align-content: space-around;
-	align-items: flex-start;
+	justify-content: flex-start;
+	align-items: flex-end;
 	height: 0;
-	overflow:hidden;
 }
 
 fieldset *:not(a):not(legend) {
 	display: none;
+}
+
+@media (min-width: 1267px) {
+	fieldset *:not(a):not(legend) {
+		flex: 0 1 25%;
+	}
+}
+
+@media (max-width: 1265px) {
+	fieldset *:not(a):not(legend) {
+		flex: 0 1 33%;
+	}
+}
+
+@media (max-width: 969px) {
+	fieldset *:not(a):not(legend) {
+		flex: 0 1 50%;
+	}
+}
+
+@media (max-width: 654px) {
+	fieldset *:not(a):not(legend) {
+		flex: 0 1 100%;
+	}
 }
 
 fieldset:target {
@@ -43,10 +66,4 @@ fieldset:target * {
 	position: absolute;
 	left: 0;
 	height: 64px;
-}
-
-@-moz-document url-prefix() { 
-  fieldset {
-     max-height: 10em;
-  }
 }
