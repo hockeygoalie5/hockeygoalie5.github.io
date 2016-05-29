@@ -612,6 +612,7 @@ var cores = [
 function populateChoices(fieldset, choices, defaultChoice) {
 	for(var choice in choices) {
 		var div = document.createElement("div");
+        div.setAttribute("class", "item");
 		fieldset.appendChild(div);
 		var input = document.createElement("input");
 		input.type = "checkbox";
@@ -622,9 +623,17 @@ function populateChoices(fieldset, choices, defaultChoice) {
 		}
 		div.appendChild(input);
 		var label = document.createElement("label");
-		label.textContent = choices[choice];
 		label.setAttribute("for", choice);
 		div.appendChild(label);
+        var checked = document.createElement("div");
+        checked.setAttribute("class", "icon16 icon-circle-check");
+        label.appendChild(checked);
+        var unchecked = document.createElement("div");
+        unchecked.setAttribute("class", "icon16 icon-circle-close");
+        label.appendChild(unchecked);
+        var span = document.createElement("span");
+        span.textContent += choices[choice];
+        label.appendChild(span);
 	}
 }
 var speciesDOM = document.getElementById("species");
@@ -641,6 +650,7 @@ populateChoices(factionDOM, factions, "nofaction");
 populateChoices(citizenshipDOM, citizenships, "nocitizen");
 populateChoices(homeSystemDOM, homeSystems, "othersys");
 populateChoices(relationDOM, ntRelations, "neutral");
+document.getElementById("loadingNotice").setAttribute("style", "display: none;");
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -686,6 +696,9 @@ function chargen() {
 	var maxBackStory = parseInt(document.getElementById("maxBackStory").value);
 	if(!formDOM.checkValidity() || !selectedSpecies.length || !selectedJobs.length || !sexes.length || !selectedReligions.length || !selectedFactions.length || !selectedHomeSystems.length || !selectedCitizenships.length || !selectedRelations.length)  {
 		output = "All choices must have at least one valid selection."
+        var p = document.createElement("p");
+        outputDOM.appendChild(p);
+        p.textContent = output;
 	} else {
 		while(charAmount) {
 			var output = "";
