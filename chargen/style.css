@@ -269,7 +269,6 @@ main {
 button, legend, .item input[type=checkbox] + label {
     min-width: 15px;
     height: 16px;
-    text-align: center;
     color: #ffffff;
     background: #40628a;
     border: 1px solid #161616;
@@ -282,7 +281,9 @@ button, legend, .item input[type=checkbox] + label {
 }
 
 .item input[type=checkbox] {
-    display: none;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
 }
 
 .item input[type=checkbox] + label .icon-circle-check {
@@ -313,16 +314,11 @@ fieldset {
 	align-content: space-around;
 	justify-content: flex-start;
 	align-items: flex-end;
-	height: 0;
     border: 0;
 }
 
 fieldset * {
 	display: none;
-}
-
-fieldset legend, legend * {
-    display: block;
 }
 
 @media (min-width: 1267px) {
@@ -347,6 +343,10 @@ fieldset legend, legend * {
 	fieldset * {
 		flex: 0 1 100%;
 	}
+}
+
+fieldset legend, legend * {
+    display: block;
 }
 
 fieldset:target {
