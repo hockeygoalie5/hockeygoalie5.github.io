@@ -11,6 +11,7 @@ body {
 hr {
   background-color: #40628a;
   height: 1px;
+  border: 0;
 }
 
 header {
@@ -309,7 +310,8 @@ button:hover, legend:hover, .item input[type=checkbox]:hover + label {
 }
 
 fieldset {
-  border: 0;
+  border: solid 1px #40628a;
+  margin-bottom: 5px;
 }
 
 .fieldsetContent {
