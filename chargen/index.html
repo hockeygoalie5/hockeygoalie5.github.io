@@ -1,173 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>SS13 Character Generator</title>
-        <meta name="description" content="SS13 Character Generator"/>
-        <meta name="keywords" content="ss13, character, generator, char, gen, chargen, bs12, baystation"/>
-        <meta name="author" content="Mustafa Kalash"/>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
-	</head>
-	<body>
-		<header>
-            <div id="statusIcon" class="icon24 statusGood"></div>
-            <h1>SS13 Character Generator</h1>
-            <div id="titleLogo"></div>
-        </header>
-        <main>
-            <div id="loadingNotice">Initiating...</div>
-            <iframe name="dummy" style="display:none;"></iframe>
-            <form id="chargen" target="dummy">
-                <fieldset id="species" name="species">
-                    <legend>
-                        <a href="#species">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Species
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
-                        <button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="jobs" name="jobs">
-                    <legend>
-                        <a href="#jobs">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Occupations
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
-                        <button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="religions" name="religions">
-                    <legend>
-                        <a href="#religions">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Religions
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="jobsSelectAll" onclick="select('religions', 'all')">All</button>
-                        <button type="button" name="jobsSelectNone" onclick="select('religions', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="factions" name="factions">
-                    <legend>
-                        <a href="#factions">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Factions
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="jobsSelectAll" onclick="select('factions', 'all')">All</button>
-                        <button type="button" name="jobsSelectNone" onclick="select('factions', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="homesystems" name="homesystems">
-                    <legend>
-                        <a href="#homesystems">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Home Systems
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="jobsSelectAll" onclick="select('homesystems', 'all')">All</button>
-                        <button type="button" name="jobsSelectNone" onclick="select('homesystems', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="citizenship" name="citizenship">
-                    <legend>
-                        <a href="#citizenship">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Citizenships
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="jobsSelectAll" onclick="select('citizenship', 'all')">All</button>
-                        <button type="button" name="jobsSelectNone" onclick="select('citizenship', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="relation" name="relation">
-                    <legend>
-                        <a href="#relation">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            NanoTrasen Relations
-                        </a>
-                    </legend>
-                    <div>
-                        <label>Select:</label>
-                        <button type="button" name="jobsSelectAll" onclick="select('relation', 'all')">All</button>
-                        <button type="button" name="jobsSelectNone" onclick="select('relation', 'none')">None</button>
-                    </div>
-                </fieldset>
-                <fieldset id="options" name="options">
-                    <legend>
-                        <a href="#options">
-                            <div class="icon16 icon-carat-1-n"></div>
-                            <div class="icon16 icon-carat-1-s"></div>
-                            Sex, Age, and Options
-                        </a>
-                    </legend>
-                    <div class="item">
-                        <label>Sex:</label><br />
-                        <input name="sex" type="checkbox" id="male" checked />
-                        <label for="male">
-                            <div class="icon16 icon-circle-close"></div>
-                            <div class="icon16 icon-circle-check"></div>
-                            Male
-                        </label>
-                        <input name="sex" type="checkbox" id="female" />
-                        <label for="female">
-                            <div class="icon16 icon-circle-close"></div>
-                            <div class="icon16 icon-circle-check"></div>
-                            Female
-                        </label>
-                    </div>
-                    <div class="item">
-                        <label>Age (respects species constraints):</label><br />
-                        <input id="minAge" type="number" value=17 required /> - <input id="maxAge" type="number" value=100 required />
-                    </div>
-                    <div class="item">
-                        <label>Flaws:</label><br />
-                        <input id="minFlaws" type="number" value=1 required /> - <input id="maxFlaws" type="number" value=3 required />
-                    </div>
-                    <div class="item">
-                        <label>Motivations:</label><br />
-                        <input id="minMotives" type="number" value=1 required /> - <input id="maxMotives" type="number" value=3 required />
-                    </div>
-                    <div class="item">
-                        <label>Back Story Elements:</label><br />
-                        <input id="minBackStory" type="number" value=1 required /> - <input id="maxBackStory" type="number" value=1 required />
-                    </div>
-                    <div class="item">
-                        <label>Characters to generate:</label><br />
-                        <input id="charAmount" type="number" value=1 required />
-                    </div>
-                </fieldset>
-                <button type="submit" name="submit" onclick="chargen()">
-                    <div class="icon16 icon-gear"></div>
-                    Generate
-                </button>
-                <output id="output"></output>
-            </form>
-        </main>
-        <script type="text/javascript" src="script.js"></script>
-	</body>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SS13 Character Generator</title>
+  <meta name="description" content="SS13 Character Generator"/>
+  <meta name="keywords" content="ss13, character, generator, char, gen, chargen, bs12, baystation"/>
+  <meta name="author" content="Mustafa Kalash"/>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div id="statusIcon" class="icon24 statusGood"></div>
+    <h1>SS13 Character Generator</h1>
+    <div id="titleLogo"></div>
+  </header>
+  <main>
+    <div id="loadingNotice">Initiating...</div>
+    <iframe name="dummy" style="display:none;"></iframe>
+    <form id="chargen" target="dummy">
+      <fieldset name="species">
+        <div id="species" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
+            <button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#species">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Species
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="jobs">
+        <div id="jobs" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#jobs">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Occupations
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="religions">
+        <div id="religions" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('religions', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('religions', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#religions">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Religions
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="factions">
+        <div id="factions" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('factions', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('factions', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#factions">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Factions
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="homesystems">
+        <div id="homesystems" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('homesystems', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('homesystems', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#homesystems">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Home Systems
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="citizenship">
+        <div id="citizenship" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('citizenship', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('citizenship', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#citizenship">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Citizenships
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="relation">
+        <div id="relation" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('relation', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('relation', 'none')">None</button>
+          </div>
+        </div>
+        <legend>
+          <a href="#relation">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            NanoTrasen Relations
+          </a>
+        </legend>
+      </fieldset>
+      <fieldset name="options">
+        <div id="options" class="fieldsetContent">
+          <div class="item">
+            <label>Sex:</label><br />
+            <input name="sex" type="checkbox" id="male" checked />
+            <label for="male">
+              <div class="icon16 icon-circle-close"></div>
+              <div class="icon16 icon-circle-check"></div>
+              Male
+            </label>
+            <input name="sex" type="checkbox" id="female" />
+            <label for="female">
+              <div class="icon16 icon-circle-close"></div>
+              <div class="icon16 icon-circle-check"></div>
+              Female
+            </label>
+          </div>
+          <div class="item">
+            <label>Age (respects species constraints):</label><br />
+            <input id="minAge" type="number" value=17 required /> - <input id="maxAge" type="number" value=100 required />
+          </div>
+          <div class="item">
+            <label>Flaws:</label><br />
+            <input id="minFlaws" type="number" value=1 required /> - <input id="maxFlaws" type="number" value=3 required />
+          </div>
+          <div class="item">
+            <label>Motivations:</label><br />
+            <input id="minMotives" type="number" value=1 required /> - <input id="maxMotives" type="number" value=3 required />
+          </div>
+          <div class="item">
+            <label>Back Story Elements:</label><br />
+            <input id="minBackStory" type="number" value=1 required /> - <input id="maxBackStory" type="number" value=1 required />
+          </div>
+          <div class="item">
+            <label>Characters to generate:</label><br />
+            <input id="charAmount" type="number" value=1 required />
+          </div>
+        </div>
+        <legend>
+          <a href="#options">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Sex, Age, and Options
+          </a>
+        </legend>
+      </fieldset>
+      <button type="submit" name="submit" onclick="chargen()">
+        <div class="icon16 icon-gear"></div>
+        Generate
+      </button>
+      <output id="output"></output>
+    </form>
+  </main>
+  <script type="text/javascript" src="script.js"></script>
+</body>
 </html>

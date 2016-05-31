@@ -340,8 +340,8 @@ var hair = {
 		"ears"
 	],
 	"vox": [
-		"short quills", 
-		"kingly quills", 
+		"short quills",
+		"kingly quills",
 		"a quill mohawk"
 	],
 	"resomi": [
@@ -491,17 +491,17 @@ var ageLimits = {
 	"synthetic": [1, 90]
 };
 var month = [
-	"January", 
-	"February", 
-	"March", 
-	"April", 
-	"May", 
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
 	"June",
-	"July", 
-	"August", 
-	"September", 
-	"October", 
-	"November", 
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
 	"December"
 ];
 var ntRelations = {
@@ -612,7 +612,7 @@ var cores = [
 function populateChoices(fieldset, choices, defaultChoice) {
 	for(var choice in choices) {
 		var div = document.createElement("div");
-        div.setAttribute("class", "item");
+		div.setAttribute("class", "item");
 		fieldset.appendChild(div);
 		var input = document.createElement("input");
 		input.type = "checkbox";
@@ -625,15 +625,15 @@ function populateChoices(fieldset, choices, defaultChoice) {
 		var label = document.createElement("label");
 		label.setAttribute("for", choice);
 		div.appendChild(label);
-        var checked = document.createElement("div");
-        checked.setAttribute("class", "icon16 icon-circle-check");
-        label.appendChild(checked);
-        var unchecked = document.createElement("div");
-        unchecked.setAttribute("class", "icon16 icon-circle-close");
-        label.appendChild(unchecked);
-        var span = document.createElement("span");
-        span.textContent += choices[choice];
-        label.appendChild(span);
+		var checked = document.createElement("div");
+		checked.setAttribute("class", "icon16 icon-circle-check");
+		label.appendChild(checked);
+		var unchecked = document.createElement("div");
+		unchecked.setAttribute("class", "icon16 icon-circle-close");
+		label.appendChild(unchecked);
+		var span = document.createElement("span");
+		span.textContent += choices[choice];
+		label.appendChild(span);
 	}
 }
 var speciesDOM = document.getElementById("species");
@@ -669,7 +669,7 @@ function replaceGender(string, sex) {
 	return string;
 }
 function getRandomDate(start, end) {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+	return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 function chargen() {
 	var outputDOM = document.getElementById("output");
@@ -696,9 +696,9 @@ function chargen() {
 	var maxBackStory = parseInt(document.getElementById("maxBackStory").value);
 	if(!formDOM.checkValidity() || !selectedSpecies.length || !selectedJobs.length || !sexes.length || !selectedReligions.length || !selectedFactions.length || !selectedHomeSystems.length || !selectedCitizenships.length || !selectedRelations.length)  {
 		output = "All choices must have at least one valid selection."
-        var p = document.createElement("p");
-        outputDOM.appendChild(p);
-        p.textContent = output;
+		var p = document.createElement("p");
+		outputDOM.appendChild(p);
+		p.textContent = output;
 	} else {
 		while(charAmount) {
 			var output = "";
@@ -890,26 +890,26 @@ function chargen() {
 			var eyeImagePath = "";
 			switch(species) {
 				case "human":
-					bodyImagePath += (sex == "male") ? "human-m.png" : "human-f.png";
-					break;
+				bodyImagePath += (sex == "male") ? "human-m.png" : "human-f.png";
+				break;
 				case "skrell":
-					bodyImagePath += (sex == "male") ? "skrell-m.png" : "skrell-f.png";
-					break;
+				bodyImagePath += (sex == "male") ? "skrell-m.png" : "skrell-f.png";
+				break;
 				case "tajara":
-					bodyImagePath += (sex == "male") ? "tajara-m.png" : "tajara-f.png";
-					break;
+				bodyImagePath += (sex == "male") ? "tajara-m.png" : "tajara-f.png";
+				break;
 				case "synthetic":
-					if(job == "ai") {
-						bodyImagePath += "cores/" + cores.indexOf(core) + ".gif";
-					} else {
-						bodyImagePath += "modules/" + module + "/" + cyborgModules[module].indexOf(body) + ".gif";
-						var eyeImagePath = "bodies/modules/" + module + "/" + cyborgModules[module].indexOf(body) + "-eyes.gif";
-					}
-					bodyImage.setAttribute("alt", "synthetic previews wip");
-					break;
+				if(job == "ai") {
+					bodyImagePath += "cores/" + cores.indexOf(core) + ".gif";
+				} else {
+					bodyImagePath += "modules/" + module + "/" + cyborgModules[module].indexOf(body) + ".gif";
+					var eyeImagePath = "bodies/modules/" + module + "/" + cyborgModules[module].indexOf(body) + "-eyes.gif";
+				}
+				bodyImage.setAttribute("alt", "synthetic previews wip");
+				break;
 				default:
-					bodyImagePath += species + ".png";
-					break;
+				bodyImagePath += species + ".png";
+				break;
 			}
 			bodyImage.setAttribute("src", bodyImagePath);
 			div.appendChild(bodyImage);
@@ -925,7 +925,7 @@ function chargen() {
 				if(species == "human") {
 					blendMode = "multiply";
 				}
-				var styleString = "top: -64px; mix-blend-mode: " + blendMode + "; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
+				var styleString = "z-index: -1; top: -64px; mix-blend-mode: " + blendMode + "; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
 				styleString += " -webkit-filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
 				skinToneOverlayImage.setAttribute("style", styleString);
 				div.appendChild(skinToneOverlayImage);
@@ -970,19 +970,19 @@ function select(section, what) {
 	var checkboxes = document.getElementById(section).querySelectorAll("input[type='checkbox']");
 	switch(what) {
 		case "all":
-			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
-				checkboxes[i].checked = "checked";
-			}
-			break;
+		for(var i = 0, ii = checkboxes.length; i < ii; i++) {
+			checkboxes[i].checked = "checked";
+		}
+		break;
 		case "none":
-			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
-				checkboxes[i].checked = "";
-			}
-			break;
+		for(var i = 0, ii = checkboxes.length; i < ii; i++) {
+			checkboxes[i].checked = "";
+		}
+		break;
 		default:
-			for(var i = 0, ii = checkboxes.length; i < ii; i++) {
-				checkboxes[i].checked = "checked";
-			}
-			break;
+		for(var i = 0, ii = checkboxes.length; i < ii; i++) {
+			checkboxes[i].checked = "checked";
+		}
+		break;
 	}
 }

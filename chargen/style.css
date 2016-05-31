@@ -1,37 +1,37 @@
 body {
-    background: #272727 url(background.png) 50% 0 repeat-x;
-    padding: 0;
-    margin: 0;
-    font-size: 12px;
-    color: #ffffff;
-    line-height: 170%;
-    font-family: Verdana, Geneva, sans-serif;
+  background: #272727 url(background.png) 50% 0 repeat-x;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 170%;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 hr {
-    background-color: #40628a;
-    height: 1px;
+  background-color: #40628a;
+  height: 1px;
 }
 
 header {
-    position: relative;
-    height: 30px;
-    box-sizing: border-box;
+  position: relative;
+  height: 30px;
+  box-sizing: border-box;
 }
 
 h1 {
-    position: absolute;
-    width: 66%;
-    overflow: hidden;
-    color: #E9C183;
-    font-size: 16px;
-    top: -5px;
-    left: 44px;
-    font-weight: normal;
+  position: absolute;
+  width: 66%;
+  overflow: hidden;
+  color: #E9C183;
+  font-size: 16px;
+  top: -5px;
+  left: 44px;
+  font-weight: normal;
 }
 
 .icon16 {
-    float: left;
+  float: left;
 	width: 16px;
 	height: 16px;
 	margin: 2px 2px 0 2px;
@@ -225,148 +225,149 @@ button .icon16 {
 .icon16.icon-grip-diagonal-se { background-position: -80px -224px; }
 
 .icon24 {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .icon24.statusGood {
-    background: url(icons24.png) 0 0 no-repeat;
+  background: url(icons24.png) 0 0 no-repeat;
 }
 
 #statusIcon {
-    position: absolute;
-    top: 4px;
-    left: 12px;
-    width: 24px;
-    height: 24px;
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
 }
 
 #titleLogo {
-    position: absolute;
-    top: 4px;
-    right: 12px;
-    width: 42px;
-    height: 24px;
-    background: url(titlelogo.png) 50% 50% no-repeat;
+  position: absolute;
+  top: 4px;
+  right: 12px;
+  width: 42px;
+  height: 24px;
+  background: url(titlelogo.png) 50% 50% no-repeat;
 }
 
 #loadingNotice {
-    position: relative;
-    background: url(noticebackground.jpg) 50% 50%;
-    color: #000000;
-    font-size: 14px;
-    font-style: italic;
-    font-weight: bold;
-    padding: 3px 4px 3px 4px;
-    margin: 4px 0 4px 0;
+  position: relative;
+  background: url(noticebackground.jpg) 50% 50%;
+  color: #000000;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  padding: 3px 4px 3px 4px;
+  margin: 4px 0 4px 0;
 }
 
 main {
-    clear: both;
-    padding: 8px;
+  clear: both;
+  padding: 8px;
 }
 
 button, legend, .item input[type=checkbox] + label {
-    min-width: 15px;
-    height: 16px;
-    color: #ffffff;
-    background: #40628a;
-    border: 1px solid #161616;
-    padding: 0px 4px 4px 4px;
-    margin: 0 2px 2px 0;
-    white-space: nowrap;
-    box-sizing: initial;
-    font: inherit;
-    line-height: 150%;
+  min-width: 15px;
+  height: 16px;
+  color: #ffffff;
+  background: #40628a;
+  border: 1px solid #161616;
+  padding: 0px 4px 4px 4px;
+  margin: 0 2px 2px 0;
+  white-space: nowrap;
+  box-sizing: initial;
+  font: inherit;
+  line-height: 150%;
 }
 
 .item input[type=checkbox] {
-    width: 0;
-    visibility: hidden;
-    position: absolute;
+  width: 0;
+  visibility: hidden;
+  position: absolute;
 }
 
 .item input[type=checkbox] + label .icon-circle-check {
-    display: none;
+  display: none;
 }
 
 .item input[type=checkbox]:checked + label .icon-circle-close {
-    display: none;
+  display: none;
 }
 
 .item input[type=checkbox]:checked + label .icon-circle-check {
-    display: inline-block;
+  display: initial;
 }
 
 legend a {
-    text-decoration: none;
-    color: inherit;
-    cursor: default;
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
 }
 
 button:hover, legend:hover, .item input[type=checkbox]:hover + label {
-    background: #507aac;
+  background: #507aac;
 }
 
 fieldset {
+  border: 0;
+}
+
+.fieldsetContent {
 	display: flex;
 	flex-flow: row wrap;
 	align-content: space-around;
 	justify-content: flex-start;
 	align-items: flex-end;
-    border: 0;
 }
 
-fieldset * {
+.fieldsetContent * {
 	display: none;
 }
 
-@media (min-width: 1267px) {
-	fieldset * {
+@media (min-width: 1776px) {
+  .fieldsetContent * {
+    flex: 0 1 20%;
+  }
+}
+
+@media (max-width: 1775px) {
+	.fieldsetContent * {
 		flex: 0 1 25%;
 	}
 }
 
-@media (max-width: 1265px) {
-	fieldset * {
+@media (max-width: 1331px) {
+	.fieldsetContent * {
 		flex: 0 1 33%;
 	}
 }
 
-@media (max-width: 969px) {
-	fieldset * {
+@media (max-width: 887px) {
+	.fieldsetContent * {
 		flex: 0 1 50%;
 	}
 }
 
-@media (max-width: 654px) {
-	fieldset * {
+@media (max-width: 443px) {
+	.fieldsetContent * {
 		flex: 0 1 100%;
 	}
 }
 
-fieldset legend, legend * {
-    display: block;
-}
-
-fieldset:target {
-	height: auto;
-}
-
-fieldset:target * {
+.fieldsetContent:target * {
 	display: inline-block;
 }
 
-fieldset:target legend .icon-carat-1-n {
-    display: none;
+.fieldsetContent:target + legend .icon-carat-1-n {
+  display: none;
 }
 
-fieldset:target legend .icon-carat-1-s {
-    display: inline-block;
+.fieldsetContent:target + legend .icon-carat-1-s {
+  display: initial;
 }
 
-fieldset legend .icon-carat-1-s {
-    display: none;
+legend .icon-carat-1-s {
+  display: none;
 }
 
 #output p {
@@ -383,4 +384,8 @@ fieldset legend .icon-carat-1-s {
 	position: absolute;
 	left: 0;
 	height: 64px;
+}
+
+input[type="number"] {
+  width: 3em;
 }
