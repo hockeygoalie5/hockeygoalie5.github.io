@@ -19,14 +19,7 @@
     <div id="loadingNotice">Initiating...</div>
     <iframe name="dummy" style="display:none;"></iframe>
     <form id="chargen" target="dummy">
-      <fieldset name="species">
-        <div id="species" class="fieldsetContent">
-          <div>
-            <label>Select:</label>
-            <button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
-            <button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
-          </div>
-        </div>
+      <fieldset id="species">
         <legend>
           <a href="#species">
             <div class="icon16 icon-carat-1-n"></div>
@@ -34,15 +27,15 @@
             Species
           </a>
         </legend>
-      </fieldset>
-      <fieldset name="jobs">
-        <div id="jobs" class="fieldsetContent">
+        <div id="speciesContent" class="fieldsetContent">
           <div>
             <label>Select:</label>
-            <button type="button" name="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
-            <button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
+            <button type="button" name="speciesSelectAll" onclick="select('species', 'all')">All</button>
+            <button type="button" name="speciesSelectNone" onclick="select('species', 'none')">None</button>
           </div>
         </div>
+      </fieldset>
+      <fieldset id="jobs">
         <legend>
           <a href="#jobs">
             <div class="icon16 icon-carat-1-n"></div>
@@ -50,15 +43,15 @@
             Occupations
           </a>
         </legend>
-      </fieldset>
-      <fieldset name="religions">
-        <div id="religions" class="fieldsetContent">
+        <div id="jobsContent" class="fieldsetContent">
           <div>
             <label>Select:</label>
-            <button type="button" name="jobsSelectAll" onclick="select('religions', 'all')">All</button>
-            <button type="button" name="jobsSelectNone" onclick="select('religions', 'none')">None</button>
+            <button type="button" id="jobsSelectAll" onclick="select('jobs', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('jobs', 'none')">None</button>
           </div>
         </div>
+      </fieldset>
+      <fieldset id="religions">
         <legend>
           <a href="#religions">
             <div class="icon16 icon-carat-1-n"></div>
@@ -66,15 +59,15 @@
             Religions
           </a>
         </legend>
-      </fieldset>
-      <fieldset name="factions">
-        <div id="factions" class="fieldsetContent">
+        <div id="religionsContent" class="fieldsetContent">
           <div>
             <label>Select:</label>
-            <button type="button" name="jobsSelectAll" onclick="select('factions', 'all')">All</button>
-            <button type="button" name="jobsSelectNone" onclick="select('factions', 'none')">None</button>
+            <button type="button" name="jobsSelectAll" onclick="select('religions', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('religions', 'none')">None</button>
           </div>
         </div>
+      </fieldset>
+      <fieldset id="factions">
         <legend>
           <a href="#factions">
             <div class="icon16 icon-carat-1-n"></div>
@@ -82,15 +75,15 @@
             Factions
           </a>
         </legend>
-      </fieldset>
-      <fieldset name="homesystems">
-        <div id="homesystems" class="fieldsetContent">
+        <div id="factionsContent" class="fieldsetContent">
           <div>
             <label>Select:</label>
-            <button type="button" name="jobsSelectAll" onclick="select('homesystems', 'all')">All</button>
-            <button type="button" name="jobsSelectNone" onclick="select('homesystems', 'none')">None</button>
+            <button type="button" name="jobsSelectAll" onclick="select('factions', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('factions', 'none')">None</button>
           </div>
         </div>
+      </fieldset>
+      <fieldset id="homesystems">
         <legend>
           <a href="#homesystems">
             <div class="icon16 icon-carat-1-n"></div>
@@ -98,15 +91,15 @@
             Home Systems
           </a>
         </legend>
-      </fieldset>
-      <fieldset name="citizenship">
-        <div id="citizenship" class="fieldsetContent">
+        <div id="homesystemsContent" class="fieldsetContent">
           <div>
             <label>Select:</label>
-            <button type="button" name="jobsSelectAll" onclick="select('citizenship', 'all')">All</button>
-            <button type="button" name="jobsSelectNone" onclick="select('citizenship', 'none')">None</button>
+            <button type="button" name="jobsSelectAll" onclick="select('homesystems', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('homesystems', 'none')">None</button>
           </div>
         </div>
+      </fieldset>
+      <fieldset id="citizenship">
         <legend>
           <a href="#citizenship">
             <div class="icon16 icon-carat-1-n"></div>
@@ -114,15 +107,15 @@
             Citizenships
           </a>
         </legend>
-      </fieldset>
-      <fieldset name="relation">
-        <div id="relation" class="fieldsetContent">
+        <div id="citizenshipContent" class="fieldsetContent">
           <div>
             <label>Select:</label>
-            <button type="button" name="jobsSelectAll" onclick="select('relation', 'all')">All</button>
-            <button type="button" name="jobsSelectNone" onclick="select('relation', 'none')">None</button>
+            <button type="button" name="jobsSelectAll" onclick="select('citizenship', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('citizenship', 'none')">None</button>
           </div>
         </div>
+      </fieldset>
+      <fieldset id="relation">
         <legend>
           <a href="#relation">
             <div class="icon16 icon-carat-1-n"></div>
@@ -130,9 +123,23 @@
             NanoTrasen Relations
           </a>
         </legend>
+        <div id="relationContent" class="fieldsetContent">
+          <div>
+            <label>Select:</label>
+            <button type="button" name="jobsSelectAll" onclick="select('relation', 'all')">All</button>
+            <button type="button" name="jobsSelectNone" onclick="select('relation', 'none')">None</button>
+          </div>
+        </div>
       </fieldset>
-      <fieldset name="options">
-        <div id="options" class="fieldsetContent">
+      <fieldset id="options">
+        <legend>
+          <a href="#options">
+            <div class="icon16 icon-carat-1-n"></div>
+            <div class="icon16 icon-carat-1-s"></div>
+            Sex, Age, and Options
+          </a>
+        </legend>
+        <div id="optionsContent" class="fieldsetContent">
           <div class="item">
             <label>Sex:</label><br />
             <input name="sex" type="checkbox" id="male" checked />
@@ -169,13 +176,6 @@
             <input id="charAmount" type="number" value=1 required />
           </div>
         </div>
-        <legend>
-          <a href="#options">
-            <div class="icon16 icon-carat-1-n"></div>
-            <div class="icon16 icon-carat-1-s"></div>
-            Sex, Age, and Options
-          </a>
-        </legend>
       </fieldset>
       <button type="submit" name="submit" onclick="chargen()">
         <div class="icon16 icon-gear"></div>

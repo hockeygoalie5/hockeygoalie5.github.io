@@ -310,8 +310,12 @@ button:hover, legend:hover, .item input[type=checkbox]:hover + label {
 }
 
 fieldset {
-  border: solid 1px #40628a;
+  border: 0;
   margin-bottom: 5px;
+}
+
+fieldset:target {
+  border: solid 1px #40628a;
 }
 
 .fieldsetContent {
@@ -356,15 +360,15 @@ fieldset {
 	}
 }
 
-.fieldsetContent:target * {
+fieldset:target .fieldsetContent * {
 	display: inline-block;
 }
 
-.fieldsetContent:target + legend .icon-carat-1-n {
+fieldset:target legend .icon-carat-1-n {
   display: none;
 }
 
-.fieldsetContent:target + legend .icon-carat-1-s {
+fieldset:target legend .icon-carat-1-s {
   display: initial;
 }
 

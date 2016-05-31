@@ -636,13 +636,13 @@ function populateChoices(fieldset, choices, defaultChoice) {
 		label.appendChild(span);
 	}
 }
-var speciesDOM = document.getElementById("species");
-var jobsDOM = document.getElementById("jobs");
-var religionDOM = document.getElementById("religions");
-var factionDOM = document.getElementById("factions");
-var citizenshipDOM = document.getElementById("citizenship");
-var homeSystemDOM = document.getElementById("homesystems");
-var relationDOM = document.getElementById("relation");
+var speciesDOM = document.getElementById("speciesContent");
+var jobsDOM = document.getElementById("jobsContent");
+var religionDOM = document.getElementById("religionsContent");
+var factionDOM = document.getElementById("factionsContent");
+var citizenshipDOM = document.getElementById("citizenshipContent");
+var homeSystemDOM = document.getElementById("homesystemsContent");
+var relationDOM = document.getElementById("relationContent");
 populateChoices(speciesDOM, speciesList, "human");
 populateChoices(jobsDOM, jobs, "assistant");
 populateChoices(religionDOM, religions, "noreligion");
