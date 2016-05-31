@@ -925,7 +925,7 @@ function chargen() {
 				if(species == "human") {
 					blendMode = "multiply";
 				}
-				var styleString = "z-index: -1; top: -64px; mix-blend-mode: " + blendMode + "; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
+				var styleString = "top: -64px; mix-blend-mode: " + blendMode + "; filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
 				styleString += " -webkit-filter: drop-shadow(0px 64px " + skinTones[species][skinTone] + ");";
 				skinToneOverlayImage.setAttribute("style", styleString);
 				div.appendChild(skinToneOverlayImage);
