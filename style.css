@@ -15,7 +15,7 @@ body {
 ul:not(#nav), ol {
   margin: 0 auto;
   min-width: 15em;
-  width: 50%;
+  width: 75%;
   padding: 0;
   list-style-position: inside;
   overflow: hidden;
@@ -49,7 +49,8 @@ main {
 .page {
   background: #E0E0E0;
   width: 100%;
-  padding: 10px 0 10px 0;
+  padding: 10px 12.5% 10px 12.5%;
+  box-sizing: border-box;
   overflow: auto;
   flex: 1 0 auto;
 }
@@ -64,17 +65,12 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6, p, div {
-  width: 75%;
-  margin: 0 auto;
   text-align: center;
+  margin: 0 auto;
 }
 
 main > h1 {
   color: #fff;
-}
-
-p:not(#fp) {
-  text-align: justify;
 }
 
 a {
@@ -172,12 +168,18 @@ tr:nth-child(2n+1) {
   background: #7fbf7f;
 }
 
-.img {
+#avatar {
   display: block;
   margin: 0 auto 5px auto;
   border-radius: 8px;
   box-shadow: inset 0px 0px 10px #000;
   border: solid 1px #000;
+}
+
+img {
+  height: 15vh;
+  max-height: 100px;
+  max-width: 90%;
 }
 
 caption {
@@ -187,9 +189,10 @@ caption {
 .showcase {
   display: flex;
   flex-flow: row wrap;
+  align-items: baseline;
 }
 
 .showcase div {
-  flex: 0 1 33%;
+  flex: 0 1 50%;
   margin-bottom: 5px;
 }
