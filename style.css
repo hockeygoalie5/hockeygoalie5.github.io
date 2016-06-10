@@ -63,7 +63,7 @@ main {
   font-style: italic;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, div {
   width: 75%;
   margin: 0 auto;
   text-align: center;
@@ -172,7 +172,7 @@ tr:nth-child(2n+1) {
   background: #7fbf7f;
 }
 
-#avatar {
+.img {
   display: block;
   margin: 0 auto 5px auto;
   border-radius: 8px;
@@ -182,4 +182,14 @@ tr:nth-child(2n+1) {
 
 caption {
   caption-side: bottom;
+}
+
+.showcase {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.showcase div {
+  flex: 0 1 33%;
+  margin-bottom: 5px;
 }
