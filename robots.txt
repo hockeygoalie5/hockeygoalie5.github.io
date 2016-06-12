@@ -1,4 +1,3 @@
-sitemap: http://cdn.attracta.com/sitemap/1879938.xml.gz
+sitemap: http://www.mkalash.com/sitemap.xml
 User-agent: *
-Allow: /
-Allow: /images/
+Allow: *
