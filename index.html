@@ -33,7 +33,13 @@
       <h5>Web developer, software developer, student</h5>
     </header>
     <main>
-      <h1>Let's cut to the chase...</h1>
+      <section class="page" id="about">
+        <h1>What am I about?</h1>
+        <img id="avatar" src="images/avatar.png" alt="profile picture" />
+        <p>
+          I am a 19-year-old student of Computer Science &amp; Engineering at The Ohio State University. My passions include teaching and technology. I have a long term goal to teach technology education classes at a high school. Right now, I am focusing on honing the skills and earning the resources necessary to embark on that pathway.
+        </p>
+      </section>
       <section class="page" id="experience">
         <h1>Where am I working?</h1>
         <div class="showcase">
@@ -54,65 +60,6 @@
             <p>
               Teaching web development and work skills to high school students. Skills used in this position include classroom management, administration, education, web development, technology, and leadership.
             </p>
-          </div>
-        </div>
-      </section>
-      <section class="page" id="skills">
-        <h1>What can I do?</h1>
-        <ul>
-          <li>
-            Programming
-            <ul>
-              <li>Java</li>
-              <li>Python</li>
-              <li>C#</li>
-              <li>MySQL</li>
-            </ul>
-          </li>
-          <li>
-            Web Development
-            <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>PHP</li>
-            </ul>
-          </li>
-          <li>
-            Technology
-            <ul>
-              <li>Bash</li>
-              <li>Batch</li>
-              <li>FTP</li>
-              <li>Git</li>
-              <li>SolidWorks</li>
-              <li>Inventor</li>
-              <li>Photoshop</li>
-              <li>Premiere</li>
-              <li>Audition</li>
-              <li>Word</li>
-              <li>Excel</li>
-              <li>PowerPoint</li>
-            </ul>
-          </li>
-          <li>Leadership</li>
-          <li>Education</li>
-        </ul>
-      </section>
-      <section class="page" id="education">
-        <h1>Where have I learned?</h1>
-        <div class="showcase">
-          <div>
-            <img src="images/experience/phsc.png" alt="Pickerington High School Central logo" />
-            <h4>Pickerington High School Central</h4>
-            <h5>Graduated 2015</h5>
-            <p>Graduated with a High Honor Roll.</p>
-          </div>
-          <div>
-            <img src="images/experience/osu.png" alt="The Ohio State University logo" />
-            <h4>The Ohio State University</h4>
-            <h5>Expected to graduate 2019</h5>
-            <p>Majoring in Computer Science &amp; Engineering, intending to earn a Bachelor's degree.</p>
           </div>
         </div>
       </section>
@@ -189,12 +136,61 @@
           </div>
         </div>
       </section>
-      <section class="page" id="about">
-        <h1>What am I about?</h1>
-        <img id="avatar" src="images/avatar.png" alt="profile picture" />
-        <p>
-          I am a 19-year-old student of Computer Science &amp; Engineering at The Ohio State University. My passions include teaching and technology. I have a long term goal to teach technology education classes at a high school. Right now, I am focusing on honing the skills and earning the resources necessary to embark on that pathway.
-        </p>
+      <section class="page" id="education">
+        <h1>Where have I learned?</h1>
+        <div class="showcase">
+          <div>
+            <img src="images/experience/phsc.png" alt="Pickerington High School Central logo" />
+            <h4>Pickerington High School Central</h4>
+            <h5>Graduated 2015</h5>
+            <p>Graduated with a High Honor Roll.</p>
+          </div>
+          <div>
+            <img src="images/experience/osu.png" alt="The Ohio State University logo" />
+            <h4>The Ohio State University</h4>
+            <h5>Expected to graduate 2019</h5>
+            <p>Majoring in Computer Science &amp; Engineering, intending to earn a Bachelor's degree.</p>
+          </div>
+        </div>
+      </section>
+      <section class="page" id="skills">
+        <h1>What can I do?</h1>
+        <ul>
+          <li>Programming
+            <ul>
+              <li>Java</li>
+              <li>Python</li>
+              <li>C#</li>
+              <li>MySQL</li>
+            </ul>
+          </li>
+          <li>Web Development
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>PHP</li>
+            </ul>
+          </li>
+          <li>Technology
+            <ul>
+              <li>Bash</li>
+              <li>Batch</li>
+              <li>FTP</li>
+              <li>Git</li>
+              <li>SolidWorks</li>
+              <li>Inventor</li>
+              <li>Photoshop</li>
+              <li>Premiere</li>
+              <li>Audition</li>
+              <li>Word</li>
+              <li>Excel</li>
+              <li>PowerPoint</li>
+            </ul>
+          </li>
+          <li>Leadership</li>
+          <li>Education</li>
+        </ul>
       </section>
     </main>
     <footer id="footer">
@@ -202,20 +198,17 @@
       <p>Third party logos are copyrights of their rightful owners</p>
     </footer>
     <nav>
+      <i id="navArrowClosed" class="fa fa-arrow-right navArrow" aria-hidden="true"></i>
+      <i id="navArrowOpen" class="fa fa-arrow-left navArrow" aria-hidden="true"></i>
       <ul id="nav">
+        <li class="navItem">
+          <a href="#about">
+            <i class="fa fa-user" aria-hidden="true"></i> About Me
+          </a>
+        </li>
         <li class="navItem">
           <a href="#experience">
             <i class="fa fa-briefcase" aria-hidden="true"></i> Experience
-          </a>
-        </li>
-        <li class="navItem">
-          <a href="#skills">
-            <i class="fa fa-star" aria-hidden="true"></i> Skills
-          </a>
-        </li>
-        <li class="navItem">
-          <a href="#education">
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Education
           </a>
         </li>
         <li class="navItem">
@@ -224,8 +217,13 @@
           </a>
         </li>
         <li class="navItem">
-          <a href="#about">
-            <i class="fa fa-user" aria-hidden="true"></i> About Me
+          <a href="#education">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Education
+          </a>
+        </li>
+        <li class="navItem">
+          <a href="#skills">
+            <i class="fa fa-star" aria-hidden="true"></i> Skills
           </a>
         </li>
         <hr />
