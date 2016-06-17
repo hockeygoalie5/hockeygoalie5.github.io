@@ -92,7 +92,7 @@ a:visited {
 }
 
 a:hover {
-  color: #016000;
+  color: #006500;
 }
 
 @keyframes slideIn {
@@ -214,16 +214,34 @@ caption {
   padding: 10px;
 }
 
-.navArrow {
+@media(max-width: 639px) {
+  .showcase div {
+    flex: 0 1 100%;
+  }
+
+  ul > li ul li {
+    display: block;
+  }
+
+  #avatar {
+    float: none;
+  }
+}
+
+@keyframes flipArrow {
+  0% {transform: rotate(180deg);}
+  83% {transform: rotate(180deg);}
+  100% {transform: rotate(0deg);}
+}
+
+#navArrow {
   position: absolute;
   top: 5px;
   left: 11.5rem;
+  transition: all 0.3s;
+  animation: flipArrow 1.8s;
 }
 
-#navArrowOpen, nav:hover #navArrowClosed {
-  display: none;
-}
-
-nav:hover #navArrowOpen {
-  display: initial;
+nav:hover #navArrow {
+  transform: rotate(180deg);
 }
