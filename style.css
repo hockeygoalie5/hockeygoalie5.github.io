@@ -21,7 +21,6 @@ ul:not(#nav) {
   padding: 0;
   list-style-position: inside;
   overflow: hidden;
-  color: #008000;
 }
 
 li {
@@ -84,15 +83,13 @@ main > h1 {
 }
 
 a {
-  color: #008000;
-}
-
-a:visited {
-  color: #004000;
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 a:hover {
-  color: #006500;
+  color: #000;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
 @keyframes slideIn {
@@ -148,44 +145,24 @@ nav hr {
   padding: 10px 0 10px 10px;
   text-decoration: none;
   display: block;
+  text-shadow: none;
+}
+
+.navItem a:hover {
+  color: #FFF;
+  text-shadow: none;
 }
 
 .navItem:hover {
   background: #222;
 }
 
-table {
-  border-collapse: collapse;
-  width: 75%;
-  border: solid 1px #006600;
-  margin: 0 auto;
-}
-
-td, th {
-  border: solid 1px #006600;
-  padding: 5px;
-}
-
-thead tr {
-  background: #006600 !important;
-  color: #FFF !important;
-}
-
-tr {
-  background: #66b266;
-}
-
-tr:nth-child(2n+1) {
-  background: #7fbf7f;
-}
-
 #avatar {
   display: block;
   border-radius: 8px;
-  box-shadow: inset 0px 0px 10px #000;
-  border: solid 1px #000;
   float: left;
-  margin-right: 10px;
+  margin: 0px 10px 10px 0px;
+  width: 150px;
 }
 
 img {
