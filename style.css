@@ -83,13 +83,11 @@ main > h1 {
 }
 
 a {
-  color: #fff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #000;
 }
 
 a:hover {
-  color: #000;
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  font-style: italic;
 }
 
 @keyframes slideIn {
@@ -145,12 +143,11 @@ nav hr {
   padding: 10px 0 10px 10px;
   text-decoration: none;
   display: block;
-  text-shadow: none;
 }
 
 .navItem a:hover {
   color: #FFF;
-  text-shadow: none;
+  font-style: normal;
 }
 
 .navItem:hover {
