@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BS12 Player Activity Viewer</title>
+    <meta name="description" content="View a generated analysis of player activity on Baystation 12."/>
+    <meta name="keywords" content="Bay, Station, 12, player, activity, mkalash"/>
+    <meta name="author" content="Mustafa Kalash"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="scripts.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>BS12 Player Activity Viewer</h1>
+      <h2 id="generatedDate"></h2>
+    </header>
+    <main>
+      <p id="daysAnalyzed"></p>
+      <p><b>Warning</b>: hilariously inaccurate due to errors in the logs. "Skipped days" count how many days were not included in the count due to errors in the log. The averaged hours count does not include these skipped days, to increase accuracy.</p>
+      <form>
+        <input type="radio" id="radioAveraged" name="shouldAverage" checked />
+        <label for="radioAveraged">Show an averaged value</label>
+        <input type="radio" id="radioTotal" name="shouldAverage" />
+        <label for="radioTotal">Show the total value</label>
+        <br />
+        <input type="checkbox" id="checkStaffOnly" name="filterStaff" />
+        <label for="checkStaffOnly">Show only game staff</label>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <td id="rankHeader"></td>
+            <td>Player</td>
+            <td>Hours Played</td>
+            <td>Skipped Days</td>
+          </tr>
+        </thead>
+        <tbody id="dataTableBody">
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

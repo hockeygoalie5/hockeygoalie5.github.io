@@ -1,0 +1,27 @@
+body {
+  background: #F2F2F2;
+  text-align: center;
+  color: #262523;
+}
+
+tbody tr {
+  background: #959595;
+}
+
+tbody tr:nth-child(odd) {
+  background: #7B7B7B;
+}
+
+thead {
+  background: #262523;
+  color: #F2F2F2;
+  font-weight: bold;
+}
+
+td {
+  padding: 5px;
+}
+
+table {
+  margin: 0 auto;
+}
