@@ -16,13 +16,13 @@ const staff = [
   "paradoxon",
   "masterrbc",
   "crushtoe",
-  "ace mcLazer",
+  "ace mclazer",
   "pobiega",
   "zerobits",
   "roaper",
   "chike101",
   "serveris6",
-  "f-tangsteve",
+  "ftangsteve",
   "psiomegadelta",
   "techhead",
   "mordeth221",
@@ -65,9 +65,13 @@ function buildData() {
       });
 
       var displayedPlayers = 0;
+      var activeStaff = [];
       for(player of playerActivity["players"]) {
-        if(filterStaff && staff.indexOf(player["key"]) == -1) {
-          continue;
+        if(filterStaff) {
+          if(staff.indexOf(player["key"]) == -1) {
+            continue;
+          }
+          activeStaff.push(player["key"]);
         }
 
         displayedPlayers++;
@@ -84,7 +88,7 @@ function buildData() {
         if(shouldAverage) {
           hoursPlayed /= (totalDays - player["skippedDays"]);
         }
-        hoursPlayedCell.innerText = hoursPlayed.toFixed(1);
+        hoursPlayedCell.innerText = Math.floor(hoursPlayed) + ":" + Math.floor((hoursPlayed * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false}) + ":" + ((((hoursPlayed * 60) % 60) * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, maximumFractionDigits: 0, useGrouping:false});
         skippedDaysCell.innerText = player["skippedDays"];
 
         newRow.appendChild(rankCell);
@@ -95,7 +99,35 @@ function buildData() {
         dataTableBody.appendChild(newRow);
       }
 
-      document.getElementById("rankHeader").innerText = "Rank (out of " + displayedPlayers + ")";
+      if(filterStaff) {
+        var inactiveStaff = staff.filter(function(staffMember) {
+          return activeStaff.indexOf(staffMember) < 0;
+        });
+
+        for(staffMember of inactiveStaff) {
+          displayedPlayers++;
+
+          var newRow = document.createElement("tr");
+          var rankCell = document.createElement("td");
+          var keyCell = document.createElement("td");
+          var hoursPlayedCell = document.createElement("td");
+          var skippedDaysCell = document.createElement("td");
+
+          rankCell.innerText = displayedPlayers;
+          keyCell.innerText = staffMember;
+          hoursPlayedCell.innerText = "-------";
+          skippedDaysCell.innerText = "-------";
+
+          newRow.appendChild(rankCell);
+          newRow.appendChild(keyCell);
+          newRow.appendChild(hoursPlayedCell);
+          newRow.appendChild(skippedDaysCell);
+
+          dataTableBody.appendChild(newRow);
+        }
+      }
+
+      document.getElementById("rankHeader").innerText = "Rank\n/ " + displayedPlayers;
     }
   };
   xobj.send(null);

@@ -20,6 +20,7 @@ for filename in getFiles("logs/*/*/*.log"):
         loginTimes = list()
         logoutTimes = list()
         mobNames = set()
+        hoursPlayed[key] = 0 
         findLoginTimes = re.compile(r"\[(\d\d:\d\d:\d\d)\].*Login: %s\/\((.*)\)" % key, re.IGNORECASE)
         for match in re.findall(findLoginTimes, logs):
             loginTimes.append(datetime.datetime.strptime(match[0], "%H:%M:%S"))
