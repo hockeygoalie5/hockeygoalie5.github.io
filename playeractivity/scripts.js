@@ -2,7 +2,6 @@ const staff = [
   "headswe",
   "snapshot",
   "sir.thatoneguy",
-  "daaneesh",
   "siegdermaus",
   "ravensdale",
   "meyar",
@@ -25,7 +24,16 @@ const staff = [
   "serveris6",
   "f-tangsteve",
   "psiomegadelta",
-  "techhead"
+  "techhead",
+  "mordeth221",
+  "shadow_of_man",
+  "cirra",
+  "eckles_fire",
+  "commissar_drew",
+  "crockers",
+  "graciegrace0",
+  "huntime",
+  "sierrakomodo"
 ];
 
 function buildData() {
