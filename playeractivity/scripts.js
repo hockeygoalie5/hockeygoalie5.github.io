@@ -23,7 +23,7 @@ const staff = [
   "serveris6",
   "ftangsteve",
   "psiomegadelta",
-  "techhead",
+  "techhead0",
   "mordeth221",
   "shadow_of_man",
   "cirra",
