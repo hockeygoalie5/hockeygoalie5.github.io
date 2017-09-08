@@ -3,7 +3,6 @@ const staff = [
   "snapshot",
   "sir.thatoneguy",
   "siegdermaus",
-  "ravensdale",
   "meyar",
   "virgili555",
   "thewelp",
@@ -33,7 +32,8 @@ const staff = [
   "crockers",
   "graciegrace0",
   "huntime",
-  "sierrakomodo"
+  "sierrakomodo",
+  "skipcam94"
 ];
 
 function buildData() {
@@ -48,8 +48,15 @@ function buildData() {
       var filterStaff = document.getElementById("checkStaffOnly").checked;
 
       document.getElementById("generatedDate").innerText = "Generated on " + playerActivity["generatedOn"] + " EST";
+
       var totalDays = playerActivity["numDays"];
       document.getElementById("daysAnalyzed").innerText = "Data gathered over " + totalDays + " days.";
+
+      if(shouldAverage) {
+        document.getElementById("totalNotice").hidden = true;
+      } else {
+        document.getElementById("totalNotice").hidden = false;
+      }
 
       var dataTableBody = document.getElementById("dataTableBody");
       while(dataTableBody.firstChild) {
@@ -57,11 +64,22 @@ function buildData() {
       }
 
       playerActivity["players"].sort(function(a, b) {
+        var aAverageHoursPlayed = a["hoursPlayed"] / (totalDays - a["skippedDays"]);
+        var bAverageHoursPlayed = b["hoursPlayed"] / (totalDays - b["skippedDays"]);
         if(shouldAverage) {
-          return (a["hoursPlayed"] / (totalDays - a["skippedDays"])) < (b["hoursPlayed"] / (totalDays - b["skippedDays"]));
+          return aAverageHoursPlayed < bAverageHoursPlayed;
+        }
+        var aSortNumber = a["hoursPlayed"];
+        var bSortNumber = b["hoursPlayed"];
+
+        if(a["skippedDays"]) {
+          aSortNumber = aSortNumber + (aAverageHoursPlayed * a["skippedDays"]);
+        }
+        if(b["skippedDays"]) {
+          bSortNumber = bSortNumber + (bAverageHoursPlayed * b["skippedDays"]);
         }
 
-        return a["hoursPlayed"] < b["hoursPlayed"];
+        return aSortNumber < bSortNumber;
       });
 
       var displayedPlayers = 0;
@@ -85,10 +103,17 @@ function buildData() {
         rankCell.innerText = displayedPlayers;
         keyCell.innerText = player["key"];
         var hoursPlayed = player["hoursPlayed"];
+        var averageHoursPlayed = hoursPlayed / (totalDays - player["skippedDays"]);
         if(shouldAverage) {
-          hoursPlayed /= (totalDays - player["skippedDays"]);
+          hoursPlayed = averageHoursPlayed;
+        } 
+        if(!shouldAverage && player["skippedDays"]) {
+          var estimatedTotalHours = hoursPlayed + (averageHoursPlayed * player["skippedDays"]);
+          hoursPlayedCell.innerText = Math.floor(estimatedTotalHours) + ":" + Math.floor((estimatedTotalHours * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false}) + ":" + ((((estimatedTotalHours * 60) % 60) * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, maximumFractionDigits: 0, useGrouping:false});
+          hoursPlayedCell.innerText += " (" + Math.floor(hoursPlayed) + ":" + Math.floor((hoursPlayed * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false}) + ":" + ((((hoursPlayed * 60) % 60) * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, maximumFractionDigits: 0, useGrouping:false}) + ")";
+        } else {
+          hoursPlayedCell.innerText = Math.floor(hoursPlayed) + ":" + Math.floor((hoursPlayed * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false}) + ":" + ((((hoursPlayed * 60) % 60) * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, maximumFractionDigits: 0, useGrouping:false});
         }
-        hoursPlayedCell.innerText = Math.floor(hoursPlayed) + ":" + Math.floor((hoursPlayed * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false}) + ":" + ((((hoursPlayed * 60) % 60) * 60) % 60).toLocaleString(undefined, {minimumIntegerDigits: 2, maximumFractionDigits: 0, useGrouping:false});
         skippedDaysCell.innerText = player["skippedDays"];
 
         newRow.appendChild(rankCell);
