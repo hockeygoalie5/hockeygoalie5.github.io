@@ -7,7 +7,6 @@ const staff = [
   "thewelp",
   "mkalash",
   "xales",
-  "noblecaos",
   "spookerton",
   "loneguyfly",
   "chronograph",
@@ -16,8 +15,6 @@ const staff = [
   "crushtoe",
   "ace mclazer",
   "pobiega",
-  "zerobits",
-  "roaper",
   "serveris6",
   "ftangsteve",
   "psiomegadelta",
@@ -26,16 +23,13 @@ const staff = [
   "shadow_of_man",
   "cirra",
   "eckles_fire",
-  "commissar_drew",
-  "crockers",
   "graciegrace0",
   "huntime",
   "sierrakomodo",
   "skipcam94",
   "paradoxspace",
-  "katastrofa",
-  "devildabeast",
-  "dragor"
+  "crockers",
+  "katastrofa"
 ];
 
 function buildData() {
