@@ -29,7 +29,10 @@ const staff = [
   "skipcam94",
   "paradoxspace",
   "crockers",
-  "katastrofa"
+  "katastrofa",
+  "commissardrew",
+  "levyafan",
+  "noblecaos"
 ];
 
 function buildData() {
