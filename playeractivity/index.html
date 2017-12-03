@@ -16,8 +16,12 @@
       <h2 id="generatedDate"></h2>
     </header>
     <main>
+      <form>
+        <b>From:</b> <input type="date" id="fromDate" /> <b>To:</b> <input type="date" id="toDate" />
+      </form>
       <p id="daysAnalyzed"></p>
-      <p><b>Warning</b>: hilariously inaccurate due to errors in the logs. "Skipped days" count how many days were not included in the count due to errors in the log. The averaged hours count does not include these skipped days, to increase accuracy.</p>
+      <p><b>Warning</b>: hilariously inaccurate due to errors in the logs. "Skipped days" count how many days were not included in the hours due these errors. The averaged hours count does not include these skipped days, to increase accuracy. Days that are skipped can still be marked as active days and days that the player does not log on at all can not count as skipped.</p>
+      <p>"Active days" indicates the total count of days (including otherwise skipped days) where a player has either spoken or emoted in character.</p>
       <p id="totalNotice"><b>Note</b>: Total hours may be estimated to account for skipped days by extrapolating using average hours per day. The true total number without this extrapolation is provided in parenthesis.</p>
       <form>
         <input type="radio" id="radioAveraged" name="shouldAverage" checked />
@@ -27,14 +31,18 @@
         <br />
         <input type="checkbox" id="checkStaffOnly" name="filterStaff" />
         <label for="checkStaffOnly">Show only game staff</label>
+        <br />
+        <label for="search">Search</label>
+        <input type="text" id="search" />
       </form>
       <table>
         <thead>
           <tr>
             <td id="rankHeader"></td>
             <td>Player</td>
-            <td>Time Played<br />(h:m:s)</td>
-            <td>Skipped Days</td>
+            <td>Time played<br />(h:m:s)</td>
+            <td id="activeDaysHeader"></td>
+            <td>Skipped days</td>
           </tr>
         </thead>
         <tbody id="dataTableBody">
