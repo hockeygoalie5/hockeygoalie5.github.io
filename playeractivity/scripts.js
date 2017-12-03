@@ -27,7 +27,7 @@ const staff = [
   "paradoxspace",
   "crockers",
   "katastrofa",
-  "commissardrew",
+  "commissar_drew",
   "levyafan",
   "noblecaos",
   "aetsuki",
@@ -98,6 +98,7 @@ function buildData(setDates) {
           });
           if(playerIndex > -1) {
             players[playerIndex]["activeDays"] += playerActivity["days"][date][player]["active"];
+            players[playerIndex]["daysLogged"] += 1;
 
             if(playerActivity["days"][date][player]["skipped"]) {
               players[playerIndex]["skippedDays"] += 1;
@@ -105,16 +106,16 @@ function buildData(setDates) {
               players[playerIndex]["secondsPlayed"] += playerActivity["days"][date][player]["secondsPlayed"];
             }
           } else {
-            players.push({"key": player, "secondsPlayed": playerActivity["days"][date][player]["secondsPlayed"], "activeDays": playerActivity["days"][date][player]["active"], "skippedDays": playerActivity["days"][date][player]["skipped"]});
+            players.push({"key": player, "secondsPlayed": playerActivity["days"][date][player]["secondsPlayed"], "activeDays": playerActivity["days"][date][player]["active"], "skippedDays": playerActivity["days"][date][player]["skipped"], "daysLogged": 1});
           }
         }
       }
 
       players.sort(function(a, b) {
-        var aAverageSecondsPlayed = a["secondsPlayed"] / (totalDays - a["skippedDays"]);
-        var bAverageSecondsPlayed = b["secondsPlayed"] / (totalDays - b["skippedDays"]);
+        var aAverageSecondsPlayed = a["secondsPlayed"] / (a["daysLogged"] - a["skippedDays"]);
+        var bAverageSecondsPlayed = b["secondsPlayed"] / (b["daysLogged"] - b["skippedDays"]);
         if(shouldAverage) {
-          return aAverageSecondsPlayed < bAverageSecondsPlayed;
+          return bAverageSecondsPlayed - aAverageSecondsPlayed;
         }
         var aSortNumber = a["secondsPlayed"];
         var bSortNumber = b["secondsPlayed"];
@@ -126,7 +127,7 @@ function buildData(setDates) {
           bSortNumber = bSortNumber + (bAverageSecondsPlayed * b["skippedDays"]);
         }
 
-        return aSortNumber < bSortNumber;
+        return bSortNumber - aSortNumber;
       });
 
       var displayedPlayers = 0;
@@ -149,13 +150,16 @@ function buildData(setDates) {
         var rankCell = document.createElement("td");
         var keyCell = document.createElement("td");
         var hoursPlayedCell = document.createElement("td");
+        var daysLoggedInCell = document.createElement("td");
         var activeDaysCell = document.createElement("td");
         var skippedDaysCell = document.createElement("td");
 
         rankCell.innerText = displayedPlayers;
         keyCell.innerText = player["key"];
+        daysLoggedInCell.innerText = player["daysLogged"];
+
         var secondsPlayed = player["secondsPlayed"];
-        var averageSecondsPlayed = secondsPlayed / (totalDays - player["skippedDays"]);
+        var averageSecondsPlayed = secondsPlayed / (player["daysLogged"] - player["skippedDays"]);
 
         if(shouldAverage) {
           var hours = Math.floor(averageSecondsPlayed / 3600);
@@ -186,6 +190,7 @@ function buildData(setDates) {
         newRow.appendChild(rankCell);
         newRow.appendChild(keyCell);
         newRow.appendChild(hoursPlayedCell);
+        newRow.appendChild(daysLoggedInCell);
         newRow.appendChild(activeDaysCell);
         newRow.appendChild(skippedDaysCell);
 
@@ -208,18 +213,21 @@ function buildData(setDates) {
           var rankCell = document.createElement("td");
           var keyCell = document.createElement("td");
           var hoursPlayedCell = document.createElement("td");
+          var daysLoggedInCell = document.createElement("td");
           var activeDaysCell = document.createElement("td");
           var skippedDaysCell = document.createElement("td");
 
           rankCell.innerText = displayedPlayers;
           keyCell.innerText = staffMember;
           hoursPlayedCell.innerText = "-------";
+          daysLoggedInCell.innerText  = "-------"; 
           activeDaysCell.innerText  = "-------"; 
           skippedDaysCell.innerText = "-------";
 
           newRow.appendChild(rankCell);
           newRow.appendChild(keyCell);
           newRow.appendChild(hoursPlayedCell);
+          newRow.appendChild(daysLoggedInCell);
           newRow.appendChild(activeDaysCell);
           newRow.appendChild(skippedDaysCell);
 
@@ -228,7 +236,9 @@ function buildData(setDates) {
       }
 
       document.getElementById("rankHeader").innerText = "Rank\n/ " + displayedPlayers;
+      document.getElementById("daysLoggedInHeader").innerText = "Days logged in\n/ " + totalDays;
       document.getElementById("activeDaysHeader").innerText = "Active days\n/ " + totalDays;
+      document.getElementById("skippedDaysHeader").innerText = "Skipped days\n/ " + totalDays;
     }
   };
   xobj.send(null);
