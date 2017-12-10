@@ -112,11 +112,24 @@ function buildData(setDates) {
       }
 
       players.sort(function(a, b) {
-        var aAverageSecondsPlayed = a["secondsPlayed"] / (a["daysLogged"] - a["skippedDays"]);
-        var bAverageSecondsPlayed = b["secondsPlayed"] / (b["daysLogged"] - b["skippedDays"]);
+        var aAverageSecondsPlayed;
+        if(a["skippedDays"] == a["daysLogged"]) {
+          aAverageSecondsPlayed = 0;
+        } else {
+          aAverageSecondsPlayed = a["secondsPlayed"] / (a["daysLogged"] - a["skippedDays"]);
+        }
+
+        var bAverageSecondsPlayed;
+        if(b["skippedDays"] == b["daysLogged"]) {
+          bAverageSecondsPlayed = 0;
+        } else {
+          bAverageSecondsPlayed = b["secondsPlayed"] / (b["daysLogged"] - b["skippedDays"]);
+        }
+
         if(shouldAverage) {
           return bAverageSecondsPlayed - aAverageSecondsPlayed;
         }
+
         var aSortNumber = a["secondsPlayed"];
         var bSortNumber = b["secondsPlayed"];
 
@@ -159,7 +172,12 @@ function buildData(setDates) {
         daysLoggedInCell.innerText = player["daysLogged"];
 
         var secondsPlayed = player["secondsPlayed"];
-        var averageSecondsPlayed = secondsPlayed / (player["daysLogged"] - player["skippedDays"]);
+        var averageSecondsPlayed;
+        if(player["skippedDays"] == player["daysLogged"]) {
+          averageSecondsPlayed = 0;
+        } else {
+          averageSecondsPlayed = secondsPlayed / (player["daysLogged"] - player["skippedDays"]);
+        }
 
         if(shouldAverage) {
           var hours = Math.floor(averageSecondsPlayed / 3600);
